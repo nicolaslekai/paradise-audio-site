@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Paradise Audio: 17 free plug-ins for Logic Pro</title>
-<meta name="description" content="Six instruments and eleven effects for Logic Pro on the Mac. Free to download. Tip if you like.">
+<meta name="description" content="Six instruments and eleven effects for Logic Pro on the Mac. Pay what you want, €0 included.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/ui/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -146,7 +146,8 @@
   .amount { font-family: var(--cond); font-weight: 700; font-size: clamp(3.5rem, 8vw, 5.5rem); line-height: .9; padding-top: .12em; font-variant-numeric: tabular-nums; }
   .amount small { font-family: var(--din); font-size: 1rem; font-weight: 600; color: var(--ink-mid); margin-left: 10px; letter-spacing: 0; }
   .presets, .pay { margin-top: 16px; }
-  .pay-row { margin-top: 12px; }
+  .pay-row { margin-top: 12px; transition: opacity .15s ease; }
+  .pay-row.off { opacity: .35; pointer-events: none; }
   .note { margin: 14px 0 0; min-height: 1.5em; color: var(--ink-mid); font-size: .9375rem; max-width: 46ch; }
   #paypal-buttons { margin-top: 22px; max-width: 360px; }
 
@@ -181,8 +182,7 @@
     <a class="brand" href="#top"><img src="assets/ui/logo.png" alt=""><span>Paradise Audio</span></a>
     <nav aria-label="Sections">
       <a href="#plug-ins">Plug-ins</a>
-      <a href="#download">Download</a>
-      <a href="#tip">Tip</a>
+      <a href="#tip">Download</a>
     </nav>
   </div>
 </header>
@@ -193,10 +193,9 @@
     <div class="wrap">
       <div>
         <h1>Seventeen plug-ins for Logic Pro. Free.</h1>
-        <p>Six instruments and eleven effects, built as Audio Units for the Mac. Download the lot. If one of them ends up on your record, you can leave a tip.</p>
+        <p>Six instruments and eleven effects, built as Audio Units for the Mac. Download the lot. Pay what you want, €0 included.</p>
         <div class="bank">
-          <a class="key red big" href="#download">Download for Mac</a>
-          <a class="key big" href="#tip">Leave a tip</a>
+          <a class="key red big" href="#tip">Download for Mac</a>
         </div>
         <small>macOS 12 or later, Apple silicon and Intel. Built and tested in Logic Pro.</small>
       </div>
@@ -216,6 +215,36 @@
     </div>
   </section>
 
+  <section class="section" id="tip">
+    <div class="wrap">
+      <div class="tip">
+        <div class="knob" id="knob" role="slider" tabindex="0" aria-label="Amount in euros" aria-valuemin="0" aria-valuemax="50" aria-valuenow="5">
+          <svg class="ticks" viewBox="-100 -100 200 200" aria-hidden="true" id="ticks"></svg>
+          <div class="body"></div>
+          <div class="pointer"></div>
+        </div>
+        <div>
+          <h2>Pick your price</h2>
+          <p class="lead">The suite is free. Before you download, choose what you want to give. €0 is fine.</p>
+          <div class="amount" aria-live="polite"><span id="amount">€5</span><small id="amount-note">one time</small></div>
+          <div class="presets bank" role="group" aria-label="Quick amounts">
+            <button class="key" type="button" data-amount="0">€0</button>
+            <button class="key" type="button" data-amount="5">€5</button>
+            <button class="key" type="button" data-amount="10">€10</button>
+            <button class="key" type="button" data-amount="20">€20</button>
+          </div>
+          <div class="pay-row"><div class="pay bank" id="pay-keys" role="group" aria-label="Pay with">
+            <button class="key ivory" type="button" data-pay="Apple Pay">Apple Pay</button>
+            <button class="key ivory" type="button" data-pay="Card">Card</button>
+            <button class="key ivory" type="button" data-pay="PayPal">PayPal</button>
+          </div></div>
+          <div id="paypal-buttons"></div>
+          <p class="note" id="pay-note" role="status"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="download">
     <div class="wrap">
       <div class="head"><h2>Download</h2><span class="count" id="dl-version"></span></div>
@@ -230,36 +259,6 @@
           <li><b>Open it and run the installer</b><span>If macOS blocks it, open System Settings, go to Privacy &amp; Security and choose Open Anyway.</span></li>
           <li><b>Restart Logic Pro</b><span>The effects are under Audio Units, Paradise Audio. The instruments are in the instrument slot under AU Instruments, Paradise Audio.</span></li>
         </ol>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="tip">
-    <div class="wrap">
-      <div class="tip">
-        <div class="knob" id="knob" role="slider" tabindex="0" aria-label="Tip amount in euros" aria-valuemin="1" aria-valuemax="50" aria-valuenow="5">
-          <svg class="ticks" viewBox="-100 -100 200 200" aria-hidden="true" id="ticks"></svg>
-          <div class="body"></div>
-          <div class="pointer"></div>
-        </div>
-        <div>
-          <h2>Leave a tip</h2>
-          <p class="lead">The suite is free and stays free. If it earned a place in your session, turn the knob.</p>
-          <div class="amount" aria-live="polite"><span id="amount">€5</span><small>one time</small></div>
-          <div class="presets bank" role="group" aria-label="Quick amounts">
-            <button class="key" type="button" data-amount="3">€3</button>
-            <button class="key" type="button" data-amount="5">€5</button>
-            <button class="key" type="button" data-amount="10">€10</button>
-            <button class="key" type="button" data-amount="25">€25</button>
-          </div>
-          <div class="pay-row"><div class="pay bank" id="pay-keys" role="group" aria-label="Pay with">
-            <button class="key ivory" type="button" data-pay="Apple Pay">Apple Pay</button>
-            <button class="key ivory" type="button" data-pay="Card">Card</button>
-            <button class="key ivory" type="button" data-pay="PayPal">PayPal</button>
-          </div></div>
-          <div id="paypal-buttons"></div>
-          <p class="note" id="pay-note" role="status"></p>
-        </div>
       </div>
     </div>
   </section>
@@ -327,7 +326,7 @@ if (CONFIG.downloadUrl) {
 if (CONFIG.version) document.getElementById("dl-version").textContent = "Version " + CONFIG.version;
 
 /* ── Tip knob ──────────────────────────────────────────────────────── */
-const MIN = 1, MAX = 50, SWEEP = 270;                       // same 270° sweep as the plug-in knobs
+const MIN = 0, MAX = 50, SWEEP = 270;                       // same 270° sweep as the plug-in knobs
 const knob = document.getElementById("knob"), amountEl = document.getElementById("amount");
 const presets = [...document.querySelectorAll("[data-amount]")];
 let amount = 5;
@@ -348,6 +347,8 @@ function setAmount(v) {
   knob.setAttribute("aria-valuenow", amount);
   knob.setAttribute("aria-valuetext", amount + " euros");
   amountEl.textContent = "€" + amount;
+  document.getElementById("amount-note").textContent = amount === 0 ? "free download" : "one time";
+  document.getElementById("pay-keys").parentElement.classList.toggle("off", amount === 0);
   presets.forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.amount === amount)));
 }
 presets.forEach(b => b.addEventListener("click", () => setAmount(+b.dataset.amount)));
@@ -381,10 +382,10 @@ if (!CONFIG.paypalClientId) {
     paypal.Buttons({
       style: { layout: "vertical", shape: "rect", label: "donate" },
       createOrder: (data, actions) => actions.order.create({
-        purchase_units: [{ description: "Paradise Audio tip", amount: { currency_code: CONFIG.currency, value: amount.toFixed(2) } }],
+        purchase_units: [{ description: "Paradise Audio contribution", amount: { currency_code: CONFIG.currency, value: amount.toFixed(2) } }],
         application_context: { shipping_preference: "NO_SHIPPING" }
       }),
-      onApprove: (data, actions) => actions.order.capture().then(() => { note.textContent = "Thank you. Your €" + amount + " tip went through."; }),
+      onApprove: (data, actions) => actions.order.capture().then(() => { note.textContent = "Thank you. Your €" + amount + " went through."; }),
       onCancel: () => { note.textContent = "Payment cancelled. Nothing was charged."; },
       onError: () => { note.textContent = "The payment did not go through. Nothing was charged. Please try again."; }
     }).render("#paypal-buttons");
