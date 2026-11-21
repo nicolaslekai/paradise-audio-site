@@ -48,7 +48,7 @@
 
   .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 
-  /* ── Top bar: the dark, red-striped bar from Synth Thing / Compressor / Delay ── */
+  /* ── Top bar: the dark, red-striped bar from Synth Thing / Compressor / Quick Delay ── */
   .bar {
     position: sticky; top: 0; z-index: 10;
     background: var(--panel);
@@ -115,8 +115,8 @@
   }
   .logic > * { width: 100cqw; }
   .lg-title { position: relative; height: calc(26 * var(--u)); display: flex; align-items: center; justify-content: center; font-size: calc(13 * var(--u)); font-weight: 600; color: #D6D6D6; }
-  .lg-lights { position: absolute; left: calc(10 * var(--u)); top: 50%; transform: translateY(-50%); display: flex; gap: calc(8 * var(--u)); }
-  .lg-lights i { width: calc(12 * var(--u)); height: calc(12 * var(--u)); border-radius: 50%; background: #FF5F57; }
+  .lg-lights { position: absolute; left: calc(12 * var(--u)); top: 50%; transform: translateY(-50%); display: flex; gap: calc(8 * var(--u)); }
+  .lg-lights i { flex: none; width: calc(12 * var(--u)); height: calc(12 * var(--u)); border-radius: 50%; background: #FF5F57; }
   .lg-lights i:nth-child(2) { background: #FEBC2E; }
   .lg-lights i:nth-child(3) { background: #28C840; }
   .lg-head { display: grid; grid-template-columns: calc(34 * var(--u)) 1fr auto; grid-template-rows: calc(30 * var(--u)) calc(30 * var(--u)); gap: calc(5 * var(--u)) calc(10 * var(--u)); padding: calc(2 * var(--u)) calc(10 * var(--u)) calc(9 * var(--u)) calc(2 * var(--u)); border-bottom: calc(1.5 * var(--u)) solid #0E0E0E; font-size: calc(13 * var(--u)); }
@@ -143,14 +143,19 @@
   .intro .count { display: block; margin-top: 8px; color: var(--ink-mid); font-size: .9375rem; }
 
   /* ── The rack ── */
-  .rack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3.4vw, 44px) clamp(16px, 2.4vw, 32px); align-items: start; }
+  .rack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(16px, 2.4vw, 32px); align-items: start; }
+  /* Every card is a 4-row subgrid, so window, name, text and red note line up across a row. */
+  .unit { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 0; padding-bottom: clamp(36px, 4.4vw, 56px); }
+  .unit.wide { grid-column: 1 / -1; }
+  .unit.wide .frame { aspect-ratio: auto; }
+  .unit.wide p { max-width: 70ch; }
   .unit .frame { aspect-ratio: 16 / 12; display: flex; align-items: flex-end; justify-content: flex-start; }
   .unit .label { display: flex; align-items: baseline; gap: 12px; margin-top: 12px; }
   .unit h3 { margin: 0; font-family: var(--cond); font-weight: 700; text-transform: uppercase; font-size: 1.5rem; letter-spacing: .06em; line-height: 1; padding-top: .14em; }
   .unit .code { margin-left: auto; font-size: .8125rem; letter-spacing: .08em; color: var(--ink-mid); white-space: nowrap; }
   .unit p { margin: 4px 0 0; max-width: 52ch; color: var(--ink-mid); font-size: .9688rem; }
   /* What makes it special: screen-printed on a red stripe, the one red per module. */
-  .unit p.why { margin-top: 12px; padding: 2px 0 2px 12px; border-left: 3px solid var(--red); color: var(--ink); font-size: 1rem; }
+  .unit p.why { align-self: start; margin-top: 12px; padding: 2px 0 2px 12px; border-left: 3px solid var(--red); color: var(--ink); font-size: 1rem; }
 
   /* ── Instruments: the stars. Big window, the introduction beside it. ── */
   .stage { display: grid; gap: clamp(64px, 9vw, 128px); }
@@ -343,17 +348,17 @@ const INSTRUMENTS = [
   ["handy-boy", "Handy Boy", "HBY-1", 1600, 1008, "A sampler for absolutely everything. Drag in a WAV, AIFF, MP4, MP3, AAC, FLAC or a voice memo and play it from the keyboard.", "Any file goes. And when it comes from a phone, the restoration chain brings back the highs and warmth the phone mic threw away."]
 ];
 const EFFECTS = [
-  ["voice-box", "Voice Box", "VBX-1", 1600, 766, "Eight vocal effects in one rack: autotune, low tuner, vocoder, harmonizer, pitch-skip, delay, chop and reverb.", "A 3D head sings along with you. Its mouth opens with your voice in real time."],
-  ["compressor", "Compressor", "CMP-1", 1600, 960, "A compressor with the usual controls, and a duck that pumps the track in time with the song.", "The duck pumps your track in time with the song, from whole bars to sixteenths, with no sidechain routing."],
-  ["eq", "EQ", "EQ-1", 1600, 945, "Four bands with a high-pass and a low-pass, and the curve on screen.", "The high-pass and low-pass sit on red knobs at both ends, so the row of knobs reads like the curve above it."],
-  ["ultra-reverse", "Ultra Reverse", "URV-1", 1600, 945, "Reverse echo. Each slice of the signal comes back played backwards, in time, as echo, reverb, pre-verb or bloom.", "Every echo plays backwards and lands on the beat, so reversed tails swell into the next hit instead of after it."],
-  ["delay", "Delay", "DLY-1", 1600, 960, "Tempo-synced delay with eight starting points, from slapback to tape.", "Tape mode adds wobble and warmth, and you watch every echo fade on screen."],
-  ["reverb", "Reverb", "RVB-1", 1600, 945, "Size, decay, damping and pre-delay. A plain, smooth room.", "EQ for the tail is built in. Cut the lows and highs of the reverb without a second plug-in."],
-  ["saturation", "Saturation", "SAT-1", 1600, 945, "Drive, bias and tone, with the curve on screen so you see what you are doing to the signal.", "The curve on screen shows exactly how hard each level gets pushed."],
-  ["de-esser", "De-esser", "DSR-1", 1600, 945, "Tames harsh S sounds in three steps: find the S, set when it reacts, set how much.", "LISTEN lets you hear only what it takes out, so you set it by ear in seconds."],
-  ["limiter", "Limiter", "LIM-1", 1600, 960, "A limiter you read at a glance: a threshold fader, a ceiling fader and the signal on screen, before and after.", "Pull the threshold down and watch the peaks flatten against the ceiling. The output never goes past it."],
-  ["big-knob", "Big Knob", "BGK-1", 1600, 1244, "One knob. Left is low-pass, right is high-pass, the middle is off.", "Low-pass and high-pass on one knob. Turn left to darken, right to thin out, centre to bypass."],
-  ["pitch-knob", "Pitch Knob", "PTK-1", 1600, 1244, "One knob that shifts the pitch down or up.", "One big knob made for live moves. Sweep the pitch down or up while the track plays."]
+  ["voice-box", "Voice Box", "VBX-1", 1600, 766, "Eight vocal effects in one rack, from autotune to vocoder.", "A 3D head sings along with you. Its mouth opens and closes with your voice in real time."],
+  ["compressor", "Compressor", "CMP-1", 1600, 960, "A classic compressor with a duck built in.", "The duck pumps the track in time with the song, from whole bars to sixteenths, no sidechain."],
+  ["eq", "EQ", "EQ-1", 1600, 945, "Four bands, high-pass and low-pass, curve on screen.", "High-pass and low-pass sit on red knobs at both ends, so the knobs read like the curve."],
+  ["ultra-reverse", "Ultra Reverse", "URV-1", 1600, 945, "Reverse echo: every slice comes back backwards.", "Each echo plays backwards and lands on the beat, so tails swell into the next hit."],
+  ["delay", "Quick Delay", "DLY-1", 1600, 960, "Tempo-synced delay with eight starting points.", "Tape mode adds wobble and warmth, and you watch every echo fade out on the screen."],
+  ["reverb", "Reverb", "RVB-1", 1600, 945, "Size, decay, damping and pre-delay. A smooth room.", "EQ for the tail is built in, so you cut its lows and highs without a second plug-in."],
+  ["saturation", "Saturation", "SAT-1", 1600, 945, "Drive, bias and tone, with the curve on screen.", "The curve on screen shows exactly how hard each level gets pushed before it clips."],
+  ["de-esser", "De-esser", "DSR-1", 1600, 945, "Tames harsh S sounds in three simple steps.", "LISTEN plays only what it takes out, so you set it by ear in a few seconds flat."],
+  ["limiter", "Limiter", "LIM-1", 1600, 960, "Threshold fader, ceiling fader, signal on screen.", "Pull the threshold down and watch the peaks flatten. The output never passes the ceiling."],
+  ["big-knob", "Big Knob", "BGK-1", 1600, 1244, "One knob: low-pass left, high-pass right.", "Turn left to darken, right to thin out. The knob in the middle adds distortion on top."],
+  ["pitch-knob", "Pitch Knob", "PTK-1", 1600, 1244, "One big knob that shifts the pitch down or up.", "Made for live moves: sweep the pitch while the track plays. The middle knob adds grit."]
 ];
 /* Plug-in size in points (the screenshots are 1600 px wide copies of 2× captures). */
 const PT = { "bass-mit-stimme": [920, 720], "big-knob": [720, 560], "compressor": [1100, 660], "de-esser": [880, 520], "delay": [1100, 660],
@@ -396,10 +401,12 @@ function logicWindow(slug, name, w, h, lazy) {
 /* Equal-height frames, every window on the same baseline: scale each window to fit the frame. */
 const FRAME = 16 / 12, CHROME_PT = 26 + 81 + 24;
 function fitWidth(slug) { const [pw, ph] = PT[slug]; return Math.min(100, 100 * (pw / (ph + CHROME_PT)) / FRAME).toFixed(2) + "%"; }
+const WIDE = new Set(["voice-box"]);
 function unit([slug, name, code, w, h, text, why]) {
   const a = document.createElement("article");
-  a.className = "unit";
-  a.innerHTML = `<div class="frame"><div style="width:${fitWidth(slug)}">${logicWindow(slug, name, w, h, true)}</div></div>
+  const wide = WIDE.has(slug);
+  a.className = wide ? "unit wide" : "unit";
+  a.innerHTML = `<div class="frame"><div style="width:${wide ? "100%" : fitWidth(slug)}">${logicWindow(slug, name, w, h, true)}</div></div>
     <div class="label"><h3>${name}</h3><span class="code">${code}</span></div><p>${text}</p><p class="why">${why}</p>`;
   return a;
 }
