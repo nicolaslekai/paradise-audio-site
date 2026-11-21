@@ -98,6 +98,13 @@
   .bank { display: inline-flex; flex-wrap: wrap; gap: 6px; padding: 6px; border-radius: 10px; background: var(--well); box-shadow: inset 0 0 0 1px rgba(233, 223, 201, .14), inset 0 2px 6px rgba(0, 0, 0, .55); }
   .hero small { display: block; margin-top: 18px; font-size: .875rem; color: var(--ink-mid); }
   .hero figure { margin: 0 calc(var(--gutter) * -1 - 6vw) 0 0; }
+  /* The showcase plug-in: Engine 909 is introduced here, under its window, and not repeated in the list. */
+  .hero-cap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 18px; align-items: baseline; margin-top: 18px; max-width: 62ch; }
+  .hero-cap .tag { grid-column: 1 / -1; font-size: .8125rem; letter-spacing: .14em; text-transform: uppercase; color: var(--red); font-weight: 600; }
+  .hero-cap h3 { margin: 0; font-family: var(--cond); font-weight: 700; text-transform: uppercase; font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: .9; letter-spacing: .02em; padding-top: .12em; }
+  .hero-cap .code { font-size: .875rem; letter-spacing: .08em; color: var(--ink-mid); }
+  .hero-cap p { grid-column: 1 / -1; margin: 10px 0 0; max-width: none; font-size: 1.0625rem; color: var(--ink); }
+  .hero-cap p.why { margin-top: 12px; padding: 2px 0 2px 14px; border-left: 3px solid var(--red); color: var(--ink-mid); }
   /* ── Logic Pro plug-in window around every screenshot ──
      Drawn at true scale: --w is the plug-in's width in points, so 1 u = 1 pt of the real window
      (title bar 28 pt, two header rows, name bar 24 pt, as Logic draws them). */
@@ -256,13 +263,13 @@
         </div>
         <small>macOS 12 or later, Apple silicon and Intel. Built and tested in Logic Pro.</small>
       </div>
-      <figure id="hero-window"></figure>
+      <figure><div id="hero-window"></div><figcaption class="hero-cap" id="hero-cap"></figcaption></figure>
     </div>
   </section>
 
   <section class="section" id="plug-ins">
     <div class="wrap">
-      <div class="intro"><h2>Instruments</h2><p>A drum machine, a synth, a string machine, two basses and a sampler for any audio file.<span class="count">6 of 17</span></p></div>
+      <div class="intro"><h2>Instruments</h2><p>Next to Engine 909: a synth, a string machine, two basses and a sampler for any audio file.<span class="count">6 of 17</span></p></div>
       <div class="stage" id="rack-instruments"></div>
 
       <div class="intro" style="margin-top: clamp(64px, 9vw, 128px)"><h2>Effects</h2><p>From one-knob tools to a whole vocal rack. Everything you need to mix the track.<span class="count">11 of 17</span></p></div>
@@ -417,7 +424,9 @@ function feature([slug, name, code, w, h, text, why], i) {
     <div><h3>${name}</h3><span class="code">${code}</span><p>${text}</p><p class="why">${why}</p></div>`;
   return a;
 }
-document.getElementById("rack-instruments").append(...INSTRUMENTS.map(feature));
+const HERO = INSTRUMENTS[0];   // Engine 909, the showcase at the top
+document.getElementById("rack-instruments").append(...INSTRUMENTS.slice(1).map(feature));
+document.getElementById("hero-cap").innerHTML = `<span class="tag">The flagship</span><h3>${HERO[1]}</h3><span class="code">${HERO[2]}</span><p>${HERO[5]}</p><p class="why">${HERO[6]}</p>`;
 document.getElementById("rack-effects").append(...EFFECTS.map(unit));
 document.getElementById("hero-window").innerHTML = logicWindow("engine-909", "Engine 909", 1600, 825, false);
 
