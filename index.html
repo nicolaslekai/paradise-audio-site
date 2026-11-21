@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paradise Audio: 17 free plug-ins for Logic Pro</title>
+<meta name="description" content="Six instruments and eleven effects for Logic Pro on the Mac. Free to download. Tip if you like.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/ui/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --face: #2B4446;
+    --panel: #182324;
+    --well: #10191A;
+    --ink: #E9DFC9;
+    --ink-mid: #A9A898;
+    --red: #E0241F;
+    --hair: rgba(233, 223, 201, .25);
+    /* DIN ships with macOS and iOS, which is where Logic users are. Barlow covers everyone else. */
+    --cond: "DIN Condensed", "Barlow Condensed", "Arial Narrow", sans-serif;
+    --din: "DIN Alternate", "Barlow", "Helvetica Neue", Arial, sans-serif;
+    --gutter: clamp(16px, 4vw, 56px);
+    --max: 1240px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--face);
+    color: var(--ink);
+    font-family: var(--din);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+  }
+  /* The page is one faceplate: painted teal steel, same bitmap as the plug-ins. */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: -1;
+    background: var(--face) url(assets/ui/faceplate_teal.jpg) center / cover no-repeat;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* ── Top bar: the dark, red-striped bar from Synth Thing / Compressor / Delay ── */
+  .bar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--panel);
+    border-bottom: 3px solid var(--red);
+  }
+  .bar .wrap { display: flex; align-items: center; gap: 12px; height: 56px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
+  .brand img { width: 34px; height: 34px; }
+  .brand span { font-family: var(--cond); font-weight: 700; font-size: 1.375rem; letter-spacing: .09em; text-transform: uppercase; padding-top: .18em; }
+  .bar nav { display: flex; gap: clamp(12px, 3vw, 28px); }
+  .bar nav a { text-decoration: none; font-size: .9375rem; color: var(--ink-mid); padding: 6px 0; }
+  .bar nav a:hover { color: var(--ink); }
+
+  /* ── Keys: the silicone rubber keys from the plug-ins, 9-sliced ── */
+  .key {
+    display: inline-block;
+    border: 13px solid transparent;
+    border-image: url(assets/ui/key_dark.png) 62 fill / 13px stretch;
+    padding: 5px 14px 3px;
+    font-family: var(--cond); font-weight: 700; font-size: 1.25rem; letter-spacing: .08em; text-transform: uppercase;
+    line-height: 1.1;
+    color: var(--ink);
+    text-decoration: none; text-align: center;
+    background: none; cursor: pointer;
+    transition: transform .06s ease, filter .06s ease;
+  }
+  .key:active { transform: translateY(1px); filter: brightness(.9); }
+  .key.red   { border-image-source: url(assets/ui/key_red.png); color: #FFF6E8; }
+  .key.ivory { border-image-source: url(assets/ui/key_ivory.png); color: #232B2B; }
+  .key.big   { font-size: 1.5rem; padding: 9px 22px 6px; }
+  .key[aria-pressed="true"] { border-image-source: url(assets/ui/key_red.png); color: #FFF6E8; }
+  .key[disabled] { cursor: default; filter: saturate(.6) brightness(.85); }
+
+  /* ── Hero ── */
+  .hero { padding: clamp(40px, 7vw, 96px) 0 clamp(40px, 6vw, 80px); overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+  h1 {
+    margin: 0;
+    font-family: var(--cond); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(3.25rem, 8.2vw, 7rem);
+    line-height: .88; letter-spacing: .01em;
+    padding-top: .12em;            /* DIN Condensed sits high in its box */
+    text-wrap: balance;
+  }
+  .hero p { max-width: 34ch; margin: 22px 0 28px; font-size: 1.1875rem; color: var(--ink); }
+  /* Keys sit in a recessed bank, as on the faceplates. */
+  .bank { display: inline-flex; flex-wrap: wrap; gap: 6px; padding: 6px; border-radius: 10px; background: var(--well); box-shadow: inset 0 0 0 1px rgba(233, 223, 201, .14), inset 0 2px 6px rgba(0, 0, 0, .55); }
+  .hero small { display: block; margin-top: 18px; font-size: .875rem; color: var(--ink-mid); }
+  .hero figure { margin: 0 calc(var(--gutter) * -1 - 6vw) 0 0; }
+  .shot {
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px rgba(233, 223, 201, .22), 0 18px 40px rgba(8, 16, 17, .55), 0 2px 6px rgba(8, 16, 17, .5);
+  }
+
+  /* ── Section heads: screen print on the faceplate ── */
+  .section { padding: clamp(36px, 6vw, 72px) 0; }
+  .head { display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid var(--hair); padding-bottom: 8px; margin-bottom: clamp(20px, 3vw, 36px); }
+  h2 { margin: 0; font-family: var(--cond); font-weight: 700; text-transform: uppercase; font-size: clamp(2rem, 4.4vw, 3.25rem); line-height: 1; letter-spacing: .04em; padding-top: .14em; }
+  .head .count { margin-left: auto; color: var(--ink-mid); font-size: .9375rem; }
+
+  /* ── The rack ── */
+  .rack { columns: 2; column-gap: clamp(20px, 3vw, 40px); }
+  .unit { break-inside: avoid; margin: 0 0 clamp(26px, 3.4vw, 44px); }
+  .unit .label { display: flex; align-items: baseline; gap: 12px; margin-top: 12px; }
+  .unit h3 { margin: 0; font-family: var(--cond); font-weight: 700; text-transform: uppercase; font-size: 1.625rem; letter-spacing: .06em; line-height: 1; padding-top: .14em; }
+  .unit .code { margin-left: auto; font-size: .8125rem; letter-spacing: .08em; color: var(--ink-mid); white-space: nowrap; }
+  .unit p { margin: 4px 0 0; max-width: 52ch; color: var(--ink-mid); font-size: 1rem; }
+
+  /* ── Download: a recessed well ── */
+  .well { background: var(--well); border-radius: 8px; box-shadow: inset 0 0 0 1px rgba(233, 223, 201, .16), inset 0 3px 10px rgba(0, 0, 0, .5); padding: clamp(20px, 4vw, 44px); }
+  .dl { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+  .dl .lead { font-size: 1.1875rem; margin: 0 0 22px; max-width: 30ch; }
+  .dl .meta { margin: 16px 0 0; color: var(--ink-mid); font-size: .9375rem; }
+  ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+  ol.steps li { counter-increment: s; display: grid; grid-template-columns: 2.2rem 1fr; gap: 4px 10px; padding: 12px 0; border-top: 1px solid rgba(233, 223, 201, .14); }
+  ol.steps li:first-child { border-top: 0; padding-top: 0; }
+  ol.steps li::before { content: counter(s); grid-row: 1 / span 2; font-family: var(--cond); font-weight: 700; font-size: 1.75rem; line-height: 1; color: var(--red); padding-top: .16em; }
+  ol.steps b { grid-column: 2; font-weight: 600; }
+  ol.steps span { grid-column: 2; color: var(--ink-mid); font-size: .9688rem; }
+
+  /* ── Tip: the one loud part. A real knob body from the suite. ── */
+  .tip { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 5vw, 72px); align-items: center; }
+  .knob {
+    --turn: -45deg;
+    position: relative; width: clamp(180px, 24vw, 260px); aspect-ratio: 1; border-radius: 50%;
+    cursor: ns-resize; touch-action: none; user-select: none; -webkit-user-select: none;
+  }
+  .knob .ticks { position: absolute; inset: 2%; }
+  .knob .body { position: absolute; inset: 0; background: url(assets/ui/knob_fluted_ivory.png) center / contain no-repeat; filter: drop-shadow(0 10px 14px rgba(8, 16, 17, .55)); }
+  .knob .pointer { position: absolute; inset: 0; transform: rotate(var(--turn)); }
+  .knob .pointer::after { content: ""; position: absolute; left: 50%; top: 17%; width: 5px; height: 21%; margin-left: -2.5px; border-radius: 3px; background: #2A3132; }
+  .knob:focus-visible { outline-offset: 4px; border-radius: 50%; }
+  .tip h2 { margin-bottom: 10px; }
+  .tip .lead { margin: 0 0 20px; max-width: 40ch; font-size: 1.1875rem; }
+  .amount { font-family: var(--cond); font-weight: 700; font-size: clamp(3.5rem, 8vw, 5.5rem); line-height: .9; padding-top: .12em; font-variant-numeric: tabular-nums; }
+  .amount small { font-family: var(--din); font-size: 1rem; font-weight: 600; color: var(--ink-mid); margin-left: 10px; letter-spacing: 0; }
+  .presets, .pay { margin-top: 16px; }
+  .pay-row { margin-top: 12px; }
+  .note { margin: 14px 0 0; min-height: 1.5em; color: var(--ink-mid); font-size: .9375rem; max-width: 46ch; }
+  #paypal-buttons { margin-top: 22px; max-width: 360px; }
+
+  /* ── Footer: the brand block every plug-in carries bottom-left ── */
+  footer { border-top: 1px solid var(--hair); margin-top: clamp(24px, 4vw, 48px); }
+  footer .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; padding-top: 14px; padding-bottom: 22px; }
+  footer .brand span { font-size: 1.0625rem; }
+  footer .brand img { width: 30px; height: 30px; }
+  footer .spec { margin-left: auto; color: var(--ink-mid); font-size: .8125rem; letter-spacing: .06em; }
+  footer a.link { color: var(--ink-mid); font-size: .9375rem; }
+  footer a.link:hover { color: var(--ink); }
+
+  @media (max-width: 860px) {
+    .hero .wrap, .dl, .tip { grid-template-columns: minmax(0, 1fr); }
+    .hero figure { display: none; }   /* the rack starts right below with the same machine */
+    .rack { columns: 1; }
+    .tip { justify-items: start; }
+    .knob { margin: 0 auto; }
+    .bar nav a:first-child { display: none; }
+    footer .spec { margin-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .key { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/ui/logo.png" alt=""><span>Paradise Audio</span></a>
+    <nav aria-label="Sections">
+      <a href="#plug-ins">Plug-ins</a>
+      <a href="#download">Download</a>
+      <a href="#tip">Tip</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Seventeen plug-ins for Logic Pro. Free.</h1>
+        <p>Six instruments and eleven effects, built as Audio Units for the Mac. Download the lot. If one of them ends up on your record, you can leave a tip.</p>
+        <div class="bank">
+          <a class="key red big" href="#download">Download for Mac</a>
+          <a class="key big" href="#tip">Leave a tip</a>
+        </div>
+        <small>macOS 12 or later, Apple silicon and Intel. Built and tested in Logic Pro.</small>
+      </div>
+      <figure>
+        <img class="shot" src="assets/shots/engine-909.jpg" width="1600" height="825" alt="Engine 909, the drum machine of the suite, with its step grid and one row of knobs per drum voice">
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="plug-ins">
+    <div class="wrap">
+      <div class="head"><h2>Instruments</h2><span class="count">6 of 17</span></div>
+      <div class="rack" id="rack-instruments"></div>
+
+      <div class="head" style="margin-top: clamp(24px, 4vw, 48px)"><h2>Effects</h2><span class="count">11 of 17</span></div>
+      <div class="rack" id="rack-effects"></div>
+    </div>
+  </section>
+
+  <section class="section" id="download">
+    <div class="wrap">
+      <div class="head"><h2>Download</h2><span class="count" id="dl-version"></span></div>
+      <div class="well dl">
+        <div>
+          <p class="lead">One installer puts all 17 plug-ins on your Mac. No account, no licence key.</p>
+          <a class="key red big" id="dl-button" href="#download">Download the suite</a>
+          <p class="meta" id="dl-meta">macOS 12 or later, Apple silicon and Intel.</p>
+        </div>
+        <ol class="steps">
+          <li><b>Download the disk image</b><span>It holds every plug-in in the suite.</span></li>
+          <li><b>Open it and run the installer</b><span>If macOS blocks it, open System Settings, go to Privacy &amp; Security and choose Open Anyway.</span></li>
+          <li><b>Restart Logic Pro</b><span>The effects are under Audio Units, Paradise Audio. The instruments are in the instrument slot under AU Instruments, Paradise Audio.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tip">
+    <div class="wrap">
+      <div class="tip">
+        <div class="knob" id="knob" role="slider" tabindex="0" aria-label="Tip amount in euros" aria-valuemin="1" aria-valuemax="50" aria-valuenow="5">
+          <svg class="ticks" viewBox="-100 -100 200 200" aria-hidden="true" id="ticks"></svg>
+          <div class="body"></div>
+          <div class="pointer"></div>
+        </div>
+        <div>
+          <h2>Leave a tip</h2>
+          <p class="lead">The suite is free and stays free. If it earned a place in your session, turn the knob.</p>
+          <div class="amount" aria-live="polite"><span id="amount">€5</span><small>one time</small></div>
+          <div class="presets bank" role="group" aria-label="Quick amounts">
+            <button class="key" type="button" data-amount="3">€3</button>
+            <button class="key" type="button" data-amount="5">€5</button>
+            <button class="key" type="button" data-amount="10">€10</button>
+            <button class="key" type="button" data-amount="25">€25</button>
+          </div>
+          <div class="pay-row"><div class="pay bank" id="pay-keys" role="group" aria-label="Pay with">
+            <button class="key ivory" type="button" data-pay="Apple Pay">Apple Pay</button>
+            <button class="key ivory" type="button" data-pay="Card">Card</button>
+            <button class="key ivory" type="button" data-pay="PayPal">PayPal</button>
+          </div></div>
+          <div id="paypal-buttons"></div>
+          <p class="note" id="pay-note" role="status"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/ui/logo.png" alt=""><span>Paradise Audio</span></a>
+    <a class="link" href="https://github.com/nicolaslekai/paradise-audio">Source on GitHub</a>
+    <span class="spec">AU v3 for macOS</span>
+  </div>
+</footer>
+
+<script>
+/* ── Settings. Fill these in to go live. ───────────────────────────── */
+const CONFIG = {
+  downloadUrl: "",          // link to the suite .dmg (e.g. a GitHub release asset)
+  downloadSize: "",         // e.g. "810 MB"
+  version: "",              // e.g. "1.0"
+  paypalClientId: "",       // PayPal Business app client ID (public, not a secret)
+  currency: "EUR"
+};
+
+/* ── The rack ──────────────────────────────────────────────────────── */
+const INSTRUMENTS = [
+  ["engine-909", "Engine 909", "DRM-1", 1600, 825, "A drum machine with a step grid and its own knobs for every voice. Every sound is synthesised, nothing is sampled. Drag the pattern into your arrangement as MIDI or audio."],
+  ["synth-thing", "Synth Thing", "SNT-1", 1600, 950, "A synth with its own step sequencer. Draw a melody on the grid, drag notes long, or start from a preset that already plays one."],
+  ["string-thing", "String Thing", "STR-1", 1600, 950, "The same grid, with strings. For pads, stabs and lines that need to hold."],
+  ["bass-mit-stimme", "Bass mit Stimme", "BST-1", 1600, 1252, "A bass you play from the keyboard, with a voice sample running through it. Stretch the sample to the tempo without changing its pitch."],
+  ["roar-bass", "Roar Bass", "RBS-1", 1600, 704, "A growling bass synth. Two oscillators, FM growl, noise, filter and drive."],
+  ["handy-boy", "Handy Boy", "HBY-1", 1600, 1008, "A sampler for phone recordings. Drop in an MP3 or a voice memo, clean it up with the restoration chain and play it."]
+];
+const EFFECTS = [
+  ["voice-box", "Voice Box", "VBX-1", 1600, 766, "Eight vocal effects in one rack: autotune, low tuner, vocoder, harmonizer, pitch-skip, delay, chop and reverb."],
+  ["compressor", "Compressor", "CMP-1", 1600, 960, "A compressor with the usual controls, and a duck that pumps the track in time with the song."],
+  ["eq", "EQ", "EQ-1", 1600, 945, "Four bands with a high-pass and a low-pass, and the curve on screen."],
+  ["ultra-reverse", "Ultra Reverse", "URV-1", 1600, 945, "Reverse echo. Each slice of the signal comes back played backwards, in time, as echo, reverb, pre-verb or bloom."],
+  ["delay", "Delay", "DLY-1", 1600, 960, "Tempo-synced delay with eight starting points, from slapback to tape."],
+  ["reverb", "Reverb", "RVB-1", 1600, 945, "Size, decay, damping and pre-delay. A plain, smooth room."],
+  ["saturation", "Saturation", "SAT-1", 1600, 945, "Drive, bias and tone, with the curve on screen so you see what you are doing to the signal."],
+  ["de-esser", "De-esser", "DSR-1", 1600, 945, "Tames harsh S sounds in three steps: find the S, set when it reacts, set how much."],
+  ["limiter", "Limiter", "LIM-1", 1600, 977, "A limiter with a loudness meter and targets for streaming and broadcast."],
+  ["big-knob", "Big Knob", "BGK-1", 1600, 1244, "One knob. Left is low-pass, right is high-pass, the middle is off."],
+  ["pitch-knob", "Pitch Knob", "PTK-1", 1600, 1244, "One knob that shifts the pitch down or up."]
+];
+function unit([slug, name, code, w, h, text]) {
+  const a = document.createElement("article");
+  a.className = "unit";
+  a.innerHTML = `<img class="shot" loading="lazy" src="assets/shots/${slug}.jpg" width="${w}" height="${h}" alt="${name} plug-in window">
+    <div class="label"><h3>${name}</h3><span class="code">${code}</span></div><p>${text}</p>`;
+  return a;
+}
+document.getElementById("rack-instruments").append(...INSTRUMENTS.map(unit));
+document.getElementById("rack-effects").append(...EFFECTS.map(unit));
+
+/* ── Download ──────────────────────────────────────────────────────── */
+const dl = document.getElementById("dl-button");
+if (CONFIG.downloadUrl) {
+  dl.href = CONFIG.downloadUrl;
+  if (CONFIG.downloadSize) document.getElementById("dl-meta").textContent = CONFIG.downloadSize + ". macOS 12 or later, Apple silicon and Intel.";
+} else {
+  dl.addEventListener("click", e => { e.preventDefault(); document.getElementById("dl-meta").textContent = "The download is not online yet."; });
+}
+if (CONFIG.version) document.getElementById("dl-version").textContent = "Version " + CONFIG.version;
+
+/* ── Tip knob ──────────────────────────────────────────────────────── */
+const MIN = 1, MAX = 50, SWEEP = 270;                       // same 270° sweep as the plug-in knobs
+const knob = document.getElementById("knob"), amountEl = document.getElementById("amount");
+const presets = [...document.querySelectorAll("[data-amount]")];
+let amount = 5;
+const ticks = document.getElementById("ticks");
+for (let i = 0; i <= 20; i++) {                             // cream screen-printed tick ring
+  const a = (-135 + i * SWEEP / 20) * Math.PI / 180, long = i % 5 === 0;
+  const r1 = long ? 86 : 89, r2 = 96;
+  const l = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  l.setAttribute("x1", Math.sin(a) * r1); l.setAttribute("y1", -Math.cos(a) * r1);
+  l.setAttribute("x2", Math.sin(a) * r2); l.setAttribute("y2", -Math.cos(a) * r2);
+  l.setAttribute("stroke", "#E9DFC9"); l.setAttribute("stroke-width", long ? 1.6 : 1); l.setAttribute("stroke-linecap", "round");
+  l.setAttribute("opacity", long ? .9 : .55);
+  ticks.append(l);
+}
+function setAmount(v) {
+  amount = Math.min(MAX, Math.max(MIN, Math.round(v)));
+  knob.style.setProperty("--turn", (-135 + (amount - MIN) / (MAX - MIN) * SWEEP) + "deg");
+  knob.setAttribute("aria-valuenow", amount);
+  knob.setAttribute("aria-valuetext", amount + " euros");
+  amountEl.textContent = "€" + amount;
+  presets.forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.amount === amount)));
+}
+presets.forEach(b => b.addEventListener("click", () => setAmount(+b.dataset.amount)));
+let drag = null;
+knob.addEventListener("pointerdown", e => { drag = { y: e.clientY, start: amount }; knob.setPointerCapture(e.pointerId); });
+knob.addEventListener("pointermove", e => { if (drag) setAmount(drag.start + (drag.y - e.clientY) / 4); });
+["pointerup", "pointercancel"].forEach(t => knob.addEventListener(t, () => { drag = null; }));
+knob.addEventListener("wheel", e => { e.preventDefault(); setAmount(amount + (e.deltaY < 0 ? 1 : -1)); }, { passive: false });
+knob.addEventListener("dblclick", () => setAmount(5));     // double-click = default, as in the plug-ins
+knob.addEventListener("keydown", e => {
+  const step = { ArrowUp: 1, ArrowRight: 1, ArrowDown: -1, ArrowLeft: -1, PageUp: 5, PageDown: -5 }[e.key];
+  if (step) { e.preventDefault(); setAmount(amount + step); }
+  if (e.key === "Home") { e.preventDefault(); setAmount(MIN); }
+  if (e.key === "End") { e.preventDefault(); setAmount(MAX); }
+});
+setAmount(5);
+
+/* ── Payment ───────────────────────────────────────────────────────── */
+const note = document.getElementById("pay-note"), payKeys = document.getElementById("pay-keys");
+if (!CONFIG.paypalClientId) {
+  payKeys.addEventListener("click", e => {
+    const b = e.target.closest("[data-pay]");
+    if (b) note.textContent = b.dataset.pay + " is not connected yet. Nothing was charged.";
+  });
+} else {
+  payKeys.parentElement.hidden = true;
+  const s = document.createElement("script");
+  s.src = "https://www.paypal.com/sdk/js?client-id=" + encodeURIComponent(CONFIG.paypalClientId) +
+          "&currency=" + CONFIG.currency + "&intent=capture&components=buttons&enable-funding=card";
+  s.onload = () => {
+    paypal.Buttons({
+      style: { layout: "vertical", shape: "rect", label: "donate" },
+      createOrder: (data, actions) => actions.order.create({
+        purchase_units: [{ description: "Paradise Audio tip", amount: { currency_code: CONFIG.currency, value: amount.toFixed(2) } }],
+        application_context: { shipping_preference: "NO_SHIPPING" }
+      }),
+      onApprove: (data, actions) => actions.order.capture().then(() => { note.textContent = "Thank you. Your €" + amount + " tip went through."; }),
+      onCancel: () => { note.textContent = "Payment cancelled. Nothing was charged."; },
+      onError: () => { note.textContent = "The payment did not go through. Nothing was charged. Please try again."; }
+    }).render("#paypal-buttons");
+  };
+  s.onerror = () => { payKeys.parentElement.hidden = false; note.textContent = "The payment service could not be loaded. Check your connection and reload the page."; };
+  document.head.append(s);
+}
+</script>
+</body>
+</html>
