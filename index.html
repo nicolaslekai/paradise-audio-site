@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --face: #2B4446;
+    --face: #1E3031;   /* faceplate teal #2B4446, 30 % darker */
     --panel: #182324;
     --well: #10191A;
     --ink: #E9DFC9;
@@ -40,7 +40,7 @@
   body::before {
     content: "";
     position: fixed; inset: 0; z-index: -1;
-    background: var(--face) url(assets/ui/faceplate_teal.jpg) center / cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), var(--face) url(assets/ui/faceplate_teal.jpg) center / cover no-repeat;
   }
   img { display: block; max-width: 100%; height: auto; }
   a { color: inherit; }
@@ -108,14 +108,21 @@
   .head { display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid var(--hair); padding-bottom: 8px; margin-bottom: clamp(20px, 3vw, 36px); }
   h2 { margin: 0; font-family: var(--cond); font-weight: 700; text-transform: uppercase; font-size: clamp(2rem, 4.4vw, 3.25rem); line-height: 1; letter-spacing: .04em; padding-top: .14em; }
   .head .count { margin-left: auto; color: var(--ink-mid); font-size: .9375rem; }
+  .intro { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px clamp(20px, 4vw, 56px); align-items: end; border-bottom: 1px solid var(--hair); padding-bottom: clamp(14px, 2vw, 22px); margin-bottom: clamp(26px, 4vw, 48px); }
+  .intro h2 { font-size: clamp(4rem, 12vw, 10.5rem); line-height: .82; letter-spacing: .005em; padding-top: .1em; }
+  .intro p { margin: 0 0 .4em; font-size: 1.1875rem; max-width: 30ch; justify-self: end; }
+  .intro .count { display: block; margin-top: 8px; color: var(--ink-mid); font-size: .9375rem; }
 
   /* ── The rack ── */
-  .rack { columns: 2; column-gap: clamp(20px, 3vw, 40px); }
-  .unit { break-inside: avoid; margin: 0 0 clamp(26px, 3.4vw, 44px); }
+  .rack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3.4vw, 44px) clamp(16px, 2.4vw, 32px); align-items: start; }
+  .unit .frame { aspect-ratio: 16 / 11; display: flex; align-items: flex-end; justify-content: flex-start; }
+  .unit .frame img { max-height: 100%; width: auto; max-width: 100%; }
   .unit .label { display: flex; align-items: baseline; gap: 12px; margin-top: 12px; }
-  .unit h3 { margin: 0; font-family: var(--cond); font-weight: 700; text-transform: uppercase; font-size: 1.625rem; letter-spacing: .06em; line-height: 1; padding-top: .14em; }
+  .unit h3 { margin: 0; font-family: var(--cond); font-weight: 700; text-transform: uppercase; font-size: 1.5rem; letter-spacing: .06em; line-height: 1; padding-top: .14em; }
   .unit .code { margin-left: auto; font-size: .8125rem; letter-spacing: .08em; color: var(--ink-mid); white-space: nowrap; }
-  .unit p { margin: 4px 0 0; max-width: 52ch; color: var(--ink-mid); font-size: 1rem; }
+  .unit p { margin: 4px 0 0; max-width: 52ch; color: var(--ink-mid); font-size: .9688rem; }
+  /* What makes it special: screen-printed on a red stripe, the one red per module. */
+  .unit p.why { margin-top: 12px; padding: 2px 0 2px 12px; border-left: 3px solid var(--red); color: var(--ink); font-size: 1rem; }
 
   /* ── Download: a recessed well ── */
   .well { background: var(--well); border-radius: 8px; box-shadow: inset 0 0 0 1px rgba(233, 223, 201, .16), inset 0 3px 10px rgba(0, 0, 0, .5); padding: clamp(20px, 4vw, 44px); }
@@ -162,12 +169,17 @@
 
   @media (max-width: 860px) {
     .hero .wrap, .dl, .tip { grid-template-columns: minmax(0, 1fr); }
-    .hero figure { display: none; }   /* the rack starts right below with the same machine */
-    .rack { columns: 1; }
+    .hero figure { margin: 8px 0 0; }
+    .intro { grid-template-columns: minmax(0, 1fr); }
+    .intro p { justify-self: start; }
+    .rack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .tip { justify-items: start; }
     .knob { margin: 0 auto; }
     .bar nav a:first-child { display: none; }
     footer .spec { margin-left: 0; }
+  }
+  @media (max-width: 560px) {
+    .rack { grid-template-columns: minmax(0, 1fr); }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -200,17 +212,17 @@
         <small>macOS 12 or later, Apple silicon and Intel. Built and tested in Logic Pro.</small>
       </div>
       <figure>
-        <img class="shot" src="assets/shots/engine-909.jpg" width="1600" height="825" alt="Engine 909, the drum machine of the suite, with its step grid and one row of knobs per drum voice">
+        <img class="shot" src="assets/shots/voice-box.jpg" width="1600" height="766" alt="Voice Box, the vocal effects rack of the suite, with a singing head and eight effect modules">
       </figure>
     </div>
   </section>
 
   <section class="section" id="plug-ins">
     <div class="wrap">
-      <div class="head"><h2>Instruments</h2><span class="count">6 of 17</span></div>
+      <div class="intro"><h2>Instruments</h2><p>A drum machine, a synth, a string machine, two basses and a sampler for phone recordings.<span class="count">6 of 17</span></p></div>
       <div class="rack" id="rack-instruments"></div>
 
-      <div class="head" style="margin-top: clamp(24px, 4vw, 48px)"><h2>Effects</h2><span class="count">11 of 17</span></div>
+      <div class="intro" style="margin-top: clamp(64px, 9vw, 128px)"><h2>Effects</h2><p>From one-knob tools to a whole vocal rack. Everything you need to mix a track.<span class="count">11 of 17</span></p></div>
       <div class="rack" id="rack-effects"></div>
     </div>
   </section>
@@ -285,31 +297,31 @@ const CONFIG = {
 
 /* ── The rack ──────────────────────────────────────────────────────── */
 const INSTRUMENTS = [
-  ["engine-909", "Engine 909", "DRM-1", 1600, 825, "A drum machine with a step grid and its own knobs for every voice. Every sound is synthesised, nothing is sampled. Drag the pattern into your arrangement as MIDI or audio."],
-  ["synth-thing", "Synth Thing", "SNT-1", 1600, 950, "A synth with its own step sequencer. Draw a melody on the grid, drag notes long, or start from a preset that already plays one."],
-  ["string-thing", "String Thing", "STR-1", 1600, 950, "The same grid, with strings. For pads, stabs and lines that need to hold."],
-  ["bass-mit-stimme", "Bass mit Stimme", "BST-1", 1600, 1252, "A bass you play from the keyboard, with a voice sample running through it. Stretch the sample to the tempo without changing its pitch."],
-  ["roar-bass", "Roar Bass", "RBS-1", 1600, 704, "A growling bass synth. Two oscillators, FM growl, noise, filter and drive."],
-  ["handy-boy", "Handy Boy", "HBY-1", 1600, 1008, "A sampler for phone recordings. Drop in an MP3 or a voice memo, clean it up with the restoration chain and play it."]
+  ["engine-909", "Engine 909", "DRM-1", 1600, 825, "A drum machine with a step grid and its own knobs for every voice. Drag the pattern into your arrangement as MIDI or audio.", "Nothing is sampled. All twelve voices are synthesised live, so every knob reshapes the sound itself, not a recording of it."],
+  ["synth-thing", "Synth Thing", "SNT-1", 1600, 950, "A synth with its own step sequencer. Draw a melody on the grid, drag notes long, or start from a preset that already plays one.", "Drag across the grid and the notes fuse into one long note, like drawing with a pen."],
+  ["string-thing", "String Thing", "STR-1", 1600, 950, "The same grid, with strings. For pads, stabs and lines that need to hold.", "The presets come with melodies already drawn in, so it plays the moment you load it."],
+  ["bass-mit-stimme", "Bass mit Stimme", "BST-1", 1600, 1252, "A bass you play from the keyboard, with a voice sample running through it.", "The voice sample stretches to your tempo without changing pitch, and WARP locks it to the beat, from a quarter beat to four bars."],
+  ["roar-bass", "Roar Bass", "RBS-1", 1600, 704, "A growling bass synth. Two oscillators, FM growl, noise, filter and drive.", "The FM growl is built in, so the bass snarls without a distortion plug-in after it."],
+  ["handy-boy", "Handy Boy", "HBY-1", 1600, 1008, "A sampler for phone recordings. Drop in an MP3 or a voice memo, clean it up with the restoration chain and play it.", "The restoration chain is made for phone audio. It brings back the highs and warmth a phone mic throws away."]
 ];
 const EFFECTS = [
-  ["voice-box", "Voice Box", "VBX-1", 1600, 766, "Eight vocal effects in one rack: autotune, low tuner, vocoder, harmonizer, pitch-skip, delay, chop and reverb."],
-  ["compressor", "Compressor", "CMP-1", 1600, 960, "A compressor with the usual controls, and a duck that pumps the track in time with the song."],
-  ["eq", "EQ", "EQ-1", 1600, 945, "Four bands with a high-pass and a low-pass, and the curve on screen."],
-  ["ultra-reverse", "Ultra Reverse", "URV-1", 1600, 945, "Reverse echo. Each slice of the signal comes back played backwards, in time, as echo, reverb, pre-verb or bloom."],
-  ["delay", "Delay", "DLY-1", 1600, 960, "Tempo-synced delay with eight starting points, from slapback to tape."],
-  ["reverb", "Reverb", "RVB-1", 1600, 945, "Size, decay, damping and pre-delay. A plain, smooth room."],
-  ["saturation", "Saturation", "SAT-1", 1600, 945, "Drive, bias and tone, with the curve on screen so you see what you are doing to the signal."],
-  ["de-esser", "De-esser", "DSR-1", 1600, 945, "Tames harsh S sounds in three steps: find the S, set when it reacts, set how much."],
-  ["limiter", "Limiter", "LIM-1", 1600, 977, "A limiter with a loudness meter and targets for streaming and broadcast."],
-  ["big-knob", "Big Knob", "BGK-1", 1600, 1244, "One knob. Left is low-pass, right is high-pass, the middle is off."],
-  ["pitch-knob", "Pitch Knob", "PTK-1", 1600, 1244, "One knob that shifts the pitch down or up."]
+  ["voice-box", "Voice Box", "VBX-1", 1600, 766, "Eight vocal effects in one rack: autotune, low tuner, vocoder, harmonizer, pitch-skip, delay, chop and reverb.", "A 3D head sings along with you. Its mouth opens with your voice in real time."],
+  ["compressor", "Compressor", "CMP-1", 1600, 960, "A compressor with the usual controls, and a duck that pumps the track in time with the song.", "The duck pumps your track in time with the song, from whole bars to sixteenths, with no sidechain routing."],
+  ["eq", "EQ", "EQ-1", 1600, 945, "Four bands with a high-pass and a low-pass, and the curve on screen.", "The high-pass and low-pass sit on red knobs at both ends, so the row of knobs reads like the curve above it."],
+  ["ultra-reverse", "Ultra Reverse", "URV-1", 1600, 945, "Reverse echo. Each slice of the signal comes back played backwards, in time, as echo, reverb, pre-verb or bloom.", "Every echo plays backwards and lands on the beat, so reversed tails swell into the next hit instead of after it."],
+  ["delay", "Delay", "DLY-1", 1600, 960, "Tempo-synced delay with eight starting points, from slapback to tape.", "Tape mode adds wobble and warmth, and you watch every echo fade on screen."],
+  ["reverb", "Reverb", "RVB-1", 1600, 945, "Size, decay, damping and pre-delay. A plain, smooth room.", "EQ for the tail is built in. Cut the lows and highs of the reverb without a second plug-in."],
+  ["saturation", "Saturation", "SAT-1", 1600, 945, "Drive, bias and tone, with the curve on screen so you see what you are doing to the signal.", "The curve on screen shows exactly how hard each level gets pushed."],
+  ["de-esser", "De-esser", "DSR-1", 1600, 945, "Tames harsh S sounds in three steps: find the S, set when it reacts, set how much.", "LISTEN lets you hear only what it takes out, so you set it by ear in seconds."],
+  ["limiter", "Limiter", "LIM-1", 1600, 977, "A limiter with a loudness meter and targets for streaming and broadcast.", "One key sets the target for streaming or broadcast, and the meter shows the loudness live."],
+  ["big-knob", "Big Knob", "BGK-1", 1600, 1244, "One knob. Left is low-pass, right is high-pass, the middle is off.", "Low-pass and high-pass on one knob. Turn left to darken, right to thin out, centre to bypass."],
+  ["pitch-knob", "Pitch Knob", "PTK-1", 1600, 1244, "One knob that shifts the pitch down or up.", "One big knob made for live moves. Sweep the pitch down or up while the track plays."]
 ];
-function unit([slug, name, code, w, h, text]) {
+function unit([slug, name, code, w, h, text, why]) {
   const a = document.createElement("article");
   a.className = "unit";
-  a.innerHTML = `<img class="shot" loading="lazy" src="assets/shots/${slug}.jpg" width="${w}" height="${h}" alt="${name} plug-in window">
-    <div class="label"><h3>${name}</h3><span class="code">${code}</span></div><p>${text}</p>`;
+  a.innerHTML = `<div class="frame"><img class="shot" loading="lazy" src="assets/shots/${slug}.jpg" width="${w}" height="${h}" alt="${name} plug-in window"></div>
+    <div class="label"><h3>${name}</h3><span class="code">${code}</span></div><p>${text}</p><p class="why">${why}</p>`;
   return a;
 }
 document.getElementById("rack-instruments").append(...INSTRUMENTS.map(unit));
