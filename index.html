@@ -98,10 +98,39 @@
   .bank { display: inline-flex; flex-wrap: wrap; gap: 6px; padding: 6px; border-radius: 10px; background: var(--well); box-shadow: inset 0 0 0 1px rgba(233, 223, 201, .14), inset 0 2px 6px rgba(0, 0, 0, .55); }
   .hero small { display: block; margin-top: 18px; font-size: .875rem; color: var(--ink-mid); }
   .hero figure { margin: 0 calc(var(--gutter) * -1 - 6vw) 0 0; }
-  .shot {
-    border-radius: 6px;
-    box-shadow: 0 0 0 1px rgba(233, 223, 201, .22), 0 18px 40px rgba(8, 16, 17, .55), 0 2px 6px rgba(8, 16, 17, .5);
+  /* ── Logic Pro plug-in window around every screenshot ──
+     Drawn at true scale: --w is the plug-in's width in points, so 1 u = 1 pt of the real window
+     (title bar 28 pt, two header rows, name bar 24 pt, as Logic draws them). */
+  .logic {
+    --u: calc(100cqw / var(--w));
+    container-type: inline-size;
+    width: 100%;
+    background: #262626;
+    border-radius: calc(10 * var(--u));
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    color: #E4E4E4;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .7), inset 0 0 0 1px rgba(255, 255, 255, .08), 0 18px 40px rgba(4, 9, 10, .6), 0 2px 6px rgba(4, 9, 10, .5);
   }
+  .logic > * { width: 100cqw; }
+  .lg-title { position: relative; height: calc(26 * var(--u)); display: flex; align-items: center; justify-content: center; font-size: calc(13 * var(--u)); font-weight: 600; color: #D6D6D6; }
+  .lg-lights { position: absolute; left: calc(10 * var(--u)); top: 50%; transform: translateY(-50%); display: flex; gap: calc(8 * var(--u)); }
+  .lg-lights i { width: calc(12 * var(--u)); height: calc(12 * var(--u)); border-radius: 50%; background: #FF5F57; }
+  .lg-lights i:nth-child(2) { background: #FEBC2E; }
+  .lg-lights i:nth-child(3) { background: #28C840; }
+  .lg-head { display: grid; grid-template-columns: calc(34 * var(--u)) 1fr auto; grid-template-rows: calc(30 * var(--u)) calc(30 * var(--u)); gap: calc(5 * var(--u)) calc(10 * var(--u)); padding: calc(2 * var(--u)) calc(10 * var(--u)) calc(9 * var(--u)) calc(2 * var(--u)); border-bottom: calc(1.5 * var(--u)) solid #0E0E0E; font-size: calc(13 * var(--u)); }
+  .lg-power { grid-row: 1; align-self: center; justify-self: center; width: calc(30 * var(--u)); height: calc(30 * var(--u)); border-radius: 50%; background: #2F7BEA; display: grid; place-items: center; }
+  .lg-power svg { width: 56%; height: 56%; }
+  .lg-row { display: flex; align-items: center; gap: calc(8 * var(--u)); min-width: 0; }
+  .lg-btn { height: calc(24 * var(--u)); display: inline-flex; align-items: center; gap: calc(8 * var(--u)); padding: 0 calc(9 * var(--u)); border-radius: calc(5 * var(--u)); background: #3A3A3A; white-space: nowrap; }
+  .lg-btn .dim { color: #8C8C8C; }
+  .lg-btn .sep { width: 1px; height: 55%; background: #5A5A5A; }
+  .lg-btn svg { width: calc(12 * var(--u)); height: calc(12 * var(--u)); }
+  .lg-preset { width: calc(270 * var(--u)); justify-content: space-between; color: #9A9A9A; }
+  .lg-view { grid-column: 3; grid-row: 2; display: flex; align-items: center; gap: calc(8 * var(--u)); color: #C8C8C8; }
+  .lg-shot { display: block; width: 100%; height: auto; }
+  .lg-name { height: calc(24 * var(--u)); display: flex; align-items: center; justify-content: center; font-size: calc(13 * var(--u)); color: #D6D6D6; border-top: calc(1 * var(--u)) solid #0E0E0E; }
 
   /* ── Section heads: screen print on the faceplate ── */
   .section { padding: clamp(36px, 6vw, 72px) 0; }
@@ -115,14 +144,23 @@
 
   /* ── The rack ── */
   .rack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3.4vw, 44px) clamp(16px, 2.4vw, 32px); align-items: start; }
-  .unit .frame { aspect-ratio: 16 / 11; display: flex; align-items: flex-end; justify-content: flex-start; }
-  .unit .frame img { max-height: 100%; width: auto; max-width: 100%; }
+  .unit .frame { aspect-ratio: 16 / 12; display: flex; align-items: flex-end; justify-content: flex-start; }
   .unit .label { display: flex; align-items: baseline; gap: 12px; margin-top: 12px; }
   .unit h3 { margin: 0; font-family: var(--cond); font-weight: 700; text-transform: uppercase; font-size: 1.5rem; letter-spacing: .06em; line-height: 1; padding-top: .14em; }
   .unit .code { margin-left: auto; font-size: .8125rem; letter-spacing: .08em; color: var(--ink-mid); white-space: nowrap; }
   .unit p { margin: 4px 0 0; max-width: 52ch; color: var(--ink-mid); font-size: .9688rem; }
   /* What makes it special: screen-printed on a red stripe, the one red per module. */
   .unit p.why { margin-top: 12px; padding: 2px 0 2px 12px; border-left: 3px solid var(--red); color: var(--ink); font-size: 1rem; }
+
+  /* ── Instruments: the stars. Big window, the introduction beside it. ── */
+  .stage { display: grid; gap: clamp(64px, 9vw, 128px); }
+  .feature { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+  .feature:nth-child(even) { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
+  .feature:nth-child(even) .win { order: 2; }
+  .feature h3 { margin: 0; font-family: var(--cond); font-weight: 700; text-transform: uppercase; font-size: clamp(3rem, 5.6vw, 5rem); line-height: .88; letter-spacing: .02em; padding-top: .12em; text-wrap: balance; }
+  .feature .code { display: block; margin-top: 10px; font-size: .875rem; letter-spacing: .08em; color: var(--ink-mid); }
+  .feature p { margin: 18px 0 0; max-width: 36ch; font-size: 1.125rem; color: var(--ink); }
+  .feature p.why { margin-top: 18px; padding: 2px 0 2px 14px; border-left: 3px solid var(--red); color: var(--ink-mid); font-size: 1.0625rem; }
 
   /* ── Download: a recessed well ── */
   .well { background: var(--well); border-radius: 8px; box-shadow: inset 0 0 0 1px rgba(233, 223, 201, .16), inset 0 3px 10px rgba(0, 0, 0, .5); padding: clamp(20px, 4vw, 44px); }
@@ -171,6 +209,8 @@
     .hero .wrap, .dl, .tip { grid-template-columns: minmax(0, 1fr); }
     .hero figure { margin: 8px 0 0; }
     .intro { grid-template-columns: minmax(0, 1fr); }
+    .feature, .feature:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
+    .feature:nth-child(even) .win { order: 0; }
     .intro p { justify-self: start; }
     .rack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .tip { justify-items: start; }
@@ -211,18 +251,16 @@
         </div>
         <small>macOS 12 or later, Apple silicon and Intel. Built and tested in Logic Pro.</small>
       </div>
-      <figure>
-        <img class="shot" src="assets/shots/voice-box.jpg" width="1600" height="766" alt="Voice Box, the vocal effects rack of the suite, with a singing head and eight effect modules">
-      </figure>
+      <figure id="hero-window"></figure>
     </div>
   </section>
 
   <section class="section" id="plug-ins">
     <div class="wrap">
       <div class="intro"><h2>Instruments</h2><p>A drum machine, a synth, a string machine, two basses and a sampler for phone recordings.<span class="count">6 of 17</span></p></div>
-      <div class="rack" id="rack-instruments"></div>
+      <div class="stage" id="rack-instruments"></div>
 
-      <div class="intro" style="margin-top: clamp(64px, 9vw, 128px)"><h2>Effects</h2><p>From one-knob tools to a whole vocal rack. Everything you need to mix a track.<span class="count">11 of 17</span></p></div>
+      <div class="intro" style="margin-top: clamp(64px, 9vw, 128px)"><h2>Effects</h2><p>From one-knob tools to a whole vocal rack. Everything you need to mix the track.<span class="count">11 of 17</span></p></div>
       <div class="rack" id="rack-effects"></div>
     </div>
   </section>
@@ -317,15 +355,64 @@ const EFFECTS = [
   ["big-knob", "Big Knob", "BGK-1", 1600, 1244, "One knob. Left is low-pass, right is high-pass, the middle is off.", "Low-pass and high-pass on one knob. Turn left to darken, right to thin out, centre to bypass."],
   ["pitch-knob", "Pitch Knob", "PTK-1", 1600, 1244, "One knob that shifts the pitch down or up.", "One big knob made for live moves. Sweep the pitch down or up while the track plays."]
 ];
+/* Plug-in size in points (the screenshots are 1600 px wide copies of 2× captures). */
+const PT = { "bass-mit-stimme": [920, 720], "big-knob": [720, 560], "compressor": [1100, 660], "de-esser": [880, 520], "delay": [1100, 660],
+  "engine-909": [1280, 660], "eq": [880, 520], "handy-boy": [920, 580], "limiter": [720, 440], "pitch-knob": [720, 560], "reverb": [880, 520],
+  "roar-bass": [1000, 440], "saturation": [880, 520], "string-thing": [1280, 760], "synth-thing": [1280, 760], "ultra-reverse": [880, 520], "voice-box": [960, 460] };
+/* The track each one would sit on in a session: Logic puts it in the title bar. */
+const TRACK = { "engine-909": "Drums", "synth-thing": "Lead", "string-thing": "Strings", "bass-mit-stimme": "Bass Vox", "roar-bass": "Sub Bass",
+  "handy-boy": "Phone Sample", "voice-box": "Lead Vocal", "compressor": "Drum Bus", "eq": "Lead Vocal", "ultra-reverse": "FX Return",
+  "delay": "Delay Bus", "reverb": "Reverb Bus", "saturation": "Bass", "de-esser": "Lead Vocal", "limiter": "Stereo Out", "big-knob": "Drum Bus", "pitch-knob": "Lead" };
+const ICON = {
+  power: '<svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg>',
+  chev: '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg>',
+  left: '<svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg>',
+  right: '<svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg>',
+  undo: '<svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg>',
+  redo: '<svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg>',
+  link: '<svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg>'
+};
+function logicWindow(slug, name, w, h, lazy) {
+  const [pw, ph] = PT[slug];
+  return `<div class="logic" style="--w:${pw}">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>${TRACK[slug]}</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power">${ICON.power}</span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual ${ICON.chev}</span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn">${ICON.left}<span class="sep"></span>${ICON.right}</span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn">${ICON.undo}<span class="sep"></span>${ICON.redo}</span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % ${ICON.chev}</span><span class="lg-btn">${ICON.link}</span></div>
+    </div>
+    <img class="lg-shot" ${lazy ? 'loading="lazy" ' : ""}src="assets/shots/${slug}.jpg" width="${w}" height="${h}" alt="${name} open in Logic Pro">
+    <div class="lg-name">${name}</div>
+  </div>`;
+}
+/* Equal-height frames, every window on the same baseline: scale each window to fit the frame. */
+const FRAME = 16 / 12, CHROME_PT = 26 + 81 + 24;
+function fitWidth(slug) { const [pw, ph] = PT[slug]; return Math.min(100, 100 * (pw / (ph + CHROME_PT)) / FRAME).toFixed(2) + "%"; }
 function unit([slug, name, code, w, h, text, why]) {
   const a = document.createElement("article");
   a.className = "unit";
-  a.innerHTML = `<div class="frame"><img class="shot" loading="lazy" src="assets/shots/${slug}.jpg" width="${w}" height="${h}" alt="${name} plug-in window"></div>
+  a.innerHTML = `<div class="frame"><div style="width:${fitWidth(slug)}">${logicWindow(slug, name, w, h, true)}</div></div>
     <div class="label"><h3>${name}</h3><span class="code">${code}</span></div><p>${text}</p><p class="why">${why}</p>`;
   return a;
 }
-document.getElementById("rack-instruments").append(...INSTRUMENTS.map(unit));
+function feature([slug, name, code, w, h, text, why], i) {
+  const a = document.createElement("article");
+  a.className = "feature";
+  a.innerHTML = `<div class="win">${logicWindow(slug, name, w, h, i > 0)}</div>
+    <div><h3>${name}</h3><span class="code">${code}</span><p>${text}</p><p class="why">${why}</p></div>`;
+  return a;
+}
+document.getElementById("rack-instruments").append(...INSTRUMENTS.map(feature));
 document.getElementById("rack-effects").append(...EFFECTS.map(unit));
+document.getElementById("hero-window").innerHTML = logicWindow("engine-909", "Engine 909", 1600, 825, false);
 
 /* ── Download ──────────────────────────────────────────────────────── */
 const dl = document.getElementById("dl-button");
