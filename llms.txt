@@ -3,7 +3,7 @@
 > 17 free Audio Unit (AUv3) plug-ins for Logic Pro on macOS 12 or later, Apple silicon and Intel: six instruments and eleven effects. Pay what you want, €0 included. Current version: V01.
 
 - [Website](https://nicolaslekai.github.io/paradise-audio-site/): all plug-ins, download and FAQ
-- [Film: Paradise Audio in 36 seconds](https://nicolaslekai.github.io/paradise-audio-site/assets/film/paradise-audio-v01.mp4): Engine 909, Compressor duck, Voice Box
+- [Film: Paradise Audio in 40 seconds](https://nicolaslekai.github.io/paradise-audio-site/assets/film/paradise-audio-v01.mp4): Engine 909, Compressor duck, Voice Box
 - [Download V01](https://github.com/nicolaslekai/paradise-audio-site/releases/download/v01/ParadiseAudio-Suite-V01.dmg): one installer with every plug-in
 
 ## Instruments

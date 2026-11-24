@@ -22,10 +22,10 @@
     <image:image><image:loc>https://nicolaslekai.github.io/paradise-audio-site/assets/shots/voice-box.jpg</image:loc></image:image>
     <video:video>
       <video:thumbnail_loc>https://nicolaslekai.github.io/paradise-audio-site/assets/film/paradise-audio-v01-poster.jpg</video:thumbnail_loc>
-      <video:title>Paradise Audio in 36 seconds</video:title>
+      <video:title>Paradise Audio in 40 seconds</video:title>
       <video:description>Engine 909, the Compressor duck and Voice Box. Every sound in the film comes from the plug-ins.</video:description>
       <video:content_loc>https://nicolaslekai.github.io/paradise-audio-site/assets/film/paradise-audio-v01.mp4</video:content_loc>
-      <video:duration>36</video:duration>
+      <video:duration>40</video:duration>
     </video:video>
   </url>
 </urlset>
