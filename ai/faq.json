@@ -1,0 +1,38 @@
+[
+ {
+  "question": "Are the Paradise Audio plug-ins really free?",
+  "answer": "Yes. All 17 plug-ins are free to download. You can pay what you want, and €0 is fine. There is no account and no licence key."
+ },
+ {
+  "question": "Which hosts do the plug-ins work in?",
+  "answer": "They are Audio Unit plug-ins (AUv3) for macOS, so they load in Mac hosts that support Audio Units. We build and test them in Logic Pro."
+ },
+ {
+  "question": "Which Macs are supported?",
+  "answer": "macOS 12 or later, on Apple silicon and Intel Macs. Every plug-in is a universal build."
+ },
+ {
+  "question": "Why does macOS ask me to choose Open Anyway?",
+  "answer": "The V01 installer is not yet signed with an Apple Developer ID. Open System Settings, go to Privacy & Security and choose Open Anyway once. After that the plug-ins load normally."
+ },
+ {
+  "question": "Where do I find the plug-ins in Logic Pro?",
+  "answer": "The effects are in any audio effect slot under Audio Units, Paradise Audio. The instruments are in the instrument slot under AU Instruments, Paradise Audio. Restart Logic Pro once after installing."
+ },
+ {
+  "question": "Is Engine 909 sample-based?",
+  "answer": "No. All twelve drum voices are synthesised live, so every knob reshapes the sound itself. Each voice has its own level, pitch, decay, delay, reverb and filter, and every one of those knobs can be automated in Logic Pro."
+ },
+ {
+  "question": "Can I drag Engine 909 patterns into my arrangement?",
+  "answer": "Yes. Drag the pattern onto a track as MIDI or as audio. You can export the mix or one audio file per drum voice."
+ },
+ {
+  "question": "What does the duck in the Compressor do?",
+  "answer": "It turns the track down and back up in time with the song, from whole bars to sixteenth notes, without setting up a sidechain."
+ },
+ {
+  "question": "What is in Voice Box?",
+  "answer": "Eight vocal effects in one rack: autotune with key and scale, harmonizer, a low octave voice, delay, stutter, chop, vocoder and reverb. A 3D head sings along with your voice in real time."
+ }
+]

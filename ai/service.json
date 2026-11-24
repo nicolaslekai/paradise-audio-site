@@ -1,0 +1,106 @@
+{
+ "products": [
+  {
+   "name": "Engine 909",
+   "type": "Audio Unit instrument",
+   "description": "A drum machine with a step grid and its own knobs for every voice. Drag the pattern into your arrangement as MIDI or audio.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/engine-909.jpg"
+  },
+  {
+   "name": "Synth Thing",
+   "type": "Audio Unit instrument",
+   "description": "A synth with its own step sequencer. Draw a melody on the grid, drag notes long, or start from a preset that already plays one.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/synth-thing.jpg"
+  },
+  {
+   "name": "String Thing",
+   "type": "Audio Unit instrument",
+   "description": "The same grid, with strings. For pads, stabs and lines that need to hold.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/string-thing.jpg"
+  },
+  {
+   "name": "Bass mit Stimme",
+   "type": "Audio Unit instrument",
+   "description": "A bass you play from the keyboard, with a voice sample running through it.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/bass-mit-stimme.jpg"
+  },
+  {
+   "name": "Roar Bass",
+   "type": "Audio Unit instrument",
+   "description": "A growling bass synth. Two oscillators, FM growl, noise, filter and drive.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/roar-bass.jpg"
+  },
+  {
+   "name": "Handy Boy",
+   "type": "Audio Unit instrument",
+   "description": "A sampler for absolutely everything. Drag in a WAV, AIFF, MP4, MP3, AAC, FLAC or a voice memo and play it from the keyboard.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/handy-boy.jpg"
+  },
+  {
+   "name": "Voice Box",
+   "type": "Audio Unit effect",
+   "description": "Eight vocal effects in one rack, from autotune to vocoder.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/voice-box.jpg"
+  },
+  {
+   "name": "Ultra Reverse",
+   "type": "Audio Unit effect",
+   "description": "Reverse echo: every slice comes back backwards.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/ultra-reverse.jpg"
+  },
+  {
+   "name": "Compressor",
+   "type": "Audio Unit effect",
+   "description": "A classic compressor with a duck built in.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/compressor.jpg"
+  },
+  {
+   "name": "EQ",
+   "type": "Audio Unit effect",
+   "description": "Four bands, high-pass and low-pass, curve on screen.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/eq.jpg"
+  },
+  {
+   "name": "Quick Delay",
+   "type": "Audio Unit effect",
+   "description": "Tempo-synced delay with eight starting points.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/delay.jpg"
+  },
+  {
+   "name": "Reverb",
+   "type": "Audio Unit effect",
+   "description": "Room, hall, plate and cathedral, one press each.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/reverb.jpg"
+  },
+  {
+   "name": "Saturation",
+   "type": "Audio Unit effect",
+   "description": "Drive, bias and tone, with the curve on screen.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/saturation.jpg"
+  },
+  {
+   "name": "De-esser",
+   "type": "Audio Unit effect",
+   "description": "Tames harsh S sounds in three simple steps.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/de-esser.jpg"
+  },
+  {
+   "name": "Limiter",
+   "type": "Audio Unit effect",
+   "description": "Threshold fader, ceiling fader, signal on screen.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/limiter.jpg"
+  },
+  {
+   "name": "Big Knob",
+   "type": "Audio Unit effect",
+   "description": "One knob: low-pass left, high-pass right.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/big-knob.jpg"
+  },
+  {
+   "name": "Pitch Knob",
+   "type": "Audio Unit effect",
+   "description": "One big knob that shifts the pitch down or up.",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/pitch-knob.jpg"
+  }
+ ]
+}

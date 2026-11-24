@@ -1,0 +1,9 @@
+{
+ "name": "Paradise Audio",
+ "url": "https://nicolaslekai.github.io/paradise-audio-site/",
+ "description": "17 free Audio Unit (AUv3) plug-ins for Logic Pro on macOS: six instruments and eleven effects.",
+ "version": "V01",
+ "price": "Free, pay what you want",
+ "platform": "macOS 12 or later, Apple silicon and Intel, Audio Unit (AUv3), tested in Logic Pro",
+ "download": "https://github.com/nicolaslekai/paradise-audio-site/releases/download/v01/ParadiseAudio-Suite-V01.dmg"
+}

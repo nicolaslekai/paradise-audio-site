@@ -1,0 +1,8 @@
+# AI crawlers are welcome to read and cite this site.
+User-agent: *
+Allow: /
+
+Summary: https://nicolaslekai.github.io/paradise-audio-site/ai/summary.json
+FAQ: https://nicolaslekai.github.io/paradise-audio-site/ai/faq.json
+Products: https://nicolaslekai.github.io/paradise-audio-site/ai/service.json
+LLMs: https://nicolaslekai.github.io/paradise-audio-site/llms.txt
