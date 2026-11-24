@@ -1,0 +1,59 @@
+# Paradise Audio
+
+> 17 free Audio Unit (AUv3) plug-ins for Logic Pro on macOS 12 or later, Apple silicon and Intel: six instruments and eleven effects. Pay what you want, €0 included. Current version: V01.
+
+- [Website](https://nicolaslekai.github.io/paradise-audio-site/): all plug-ins, download and FAQ
+- [Film: Paradise Audio in 30 seconds](https://nicolaslekai.github.io/paradise-audio-site/assets/film/paradise-audio-v01.mp4): Engine 909, Compressor duck, Voice Box
+- [Download V01](https://github.com/nicolaslekai/paradise-audio-site/releases/download/v01/ParadiseAudio-Suite-V01.dmg): one installer with every plug-in
+
+## Instruments
+
+- Engine 909: A drum machine with a step grid and its own knobs for every voice. Drag the pattern into your arrangement as MIDI or audio.
+- Synth Thing: A synth with its own step sequencer. Draw a melody on the grid, drag notes long, or start from a preset that already plays one.
+- String Thing: The same grid, with strings. For pads, stabs and lines that need to hold.
+- Bass mit Stimme: A bass you play from the keyboard, with a voice sample running through it.
+- Roar Bass: A growling bass synth. Two oscillators, FM growl, noise, filter and drive.
+- Handy Boy: A sampler for absolutely everything. Drag in a WAV, AIFF, MP4, MP3, AAC, FLAC or a voice memo and play it from the keyboard.
+
+## Effects
+
+- Voice Box: Eight vocal effects in one rack, from autotune to vocoder.
+- Ultra Reverse: Reverse echo: every slice comes back backwards.
+- Compressor: A classic compressor with a duck built in.
+- EQ: Four bands, high-pass and low-pass, curve on screen.
+- Quick Delay: Tempo-synced delay with eight starting points.
+- Reverb: Room, hall, plate and cathedral, one press each.
+- Saturation: Drive, bias and tone, with the curve on screen.
+- De-esser: Tames harsh S sounds in three simple steps.
+- Limiter: Threshold fader, ceiling fader, signal on screen.
+- Big Knob: One knob: low-pass left, high-pass right.
+- Pitch Knob: One big knob that shifts the pitch down or up.
+
+## FAQ
+
+### Are the Paradise Audio plug-ins really free?
+Yes. All 17 plug-ins are free to download. You can pay what you want, and €0 is fine. There is no account and no licence key.
+
+### Which hosts do the plug-ins work in?
+They are Audio Unit plug-ins (AUv3) for macOS, so they load in Mac hosts that support Audio Units. We build and test them in Logic Pro.
+
+### Which Macs are supported?
+macOS 12 or later, on Apple silicon and Intel Macs. Every plug-in is a universal build.
+
+### Why does macOS ask me to choose Open Anyway?
+The V01 installer is not yet signed with an Apple Developer ID. Open System Settings, go to Privacy & Security and choose Open Anyway once. After that the plug-ins load normally.
+
+### Where do I find the plug-ins in Logic Pro?
+The effects are in any audio effect slot under Audio Units, Paradise Audio. The instruments are in the instrument slot under AU Instruments, Paradise Audio. Restart Logic Pro once after installing.
+
+### Is Engine 909 sample-based?
+No. All twelve drum voices are synthesised live, so every knob reshapes the sound itself. Each voice has its own level, pitch, decay, delay, reverb and filter, and every one of those knobs can be automated in Logic Pro.
+
+### Can I drag Engine 909 patterns into my arrangement?
+Yes. Drag the pattern onto a track as MIDI or as audio. You can export the mix or one audio file per drum voice.
+
+### What does the duck in the Compressor do?
+It turns the track down and back up in time with the song, from whole bars to sixteenth notes, without setting up a sidechain.
+
+### What is in Voice Box?
+Eight vocal effects in one rack: autotune with key and scale, harmonizer, a low octave voice, delay, stutter, chop, vocoder and reverb. A 3D head sings along with your voice in real time.

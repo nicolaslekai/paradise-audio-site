@@ -4,8 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Paradise Audio: 17 free plug-ins for Logic Pro</title>
-<meta name="description" content="Six instruments and eleven effects for Logic Pro on the Mac. Pay what you want, €0 included.">
-<meta name="robots" content="noindex">
+<meta name="description" content="17 free Audio Unit plug-ins for Logic Pro on Mac: a synthesised drum machine, synths, basses, a sampler, a vocal rack and eleven mixing effects. Pay what you want.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://nicolaslekai.github.io/paradise-audio-site/">
+<meta name="theme-color" content="#1E3031">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Paradise Audio">
+<meta property="og:title" content="Paradise Audio: 17 free plug-ins for Logic Pro">
+<meta property="og:description" content="A synthesised drum machine, synths, basses, a sampler, a vocal rack and eleven effects. Audio Units for the Mac. Pay what you want, €0 included.">
+<meta property="og:url" content="https://nicolaslekai.github.io/paradise-audio-site/">
+<meta property="og:image" content="https://nicolaslekai.github.io/paradise-audio-site/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Engine 909 drum machine plug-in open in Logic Pro">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Paradise Audio: 17 free plug-ins for Logic Pro">
+<meta name="twitter:description" content="A synthesised drum machine, synths, basses, a sampler, a vocal rack and eleven effects for the Mac. Pay what you want.">
+<meta name="twitter:image" content="https://nicolaslekai.github.io/paradise-audio-site/assets/og.jpg">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
 <link rel="icon" href="assets/ui/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -209,6 +225,15 @@
   #paypal-buttons { margin-top: 22px; max-width: 360px; }
 
   /* ── Footer: the brand block every plug-in carries bottom-left ── */
+  .well.film { padding: clamp(8px, 1.2vw, 14px); }
+  .well.film video { display: block; width: 100%; height: auto; border-radius: 4px; background: #000; }
+  .faq { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 0 clamp(20px, 4vw, 56px); }
+  details.qa { border-top: 1px solid rgba(233, 223, 201, .14); padding: 14px 0; }
+  details.qa summary { cursor: pointer; list-style: none; font-weight: 600; display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+  details.qa summary::-webkit-details-marker { display: none; }
+  details.qa summary::after { content: "+"; color: var(--red); font-family: var(--cond); font-weight: 700; font-size: 1.5rem; line-height: 1; }
+  details.qa[open] summary::after { content: "\2212"; }
+  details.qa p { margin: 8px 0 0; color: var(--ink-mid); font-size: .9688rem; max-width: 62ch; }
   footer { border-top: 1px solid var(--hair); margin-top: clamp(24px, 4vw, 48px); }
   footer .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; padding-top: 14px; padding-bottom: 22px; }
   footer .brand span { font-size: 1.0625rem; }
@@ -227,7 +252,7 @@
     .rack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .tip { justify-items: start; }
     .knob { margin: 0 auto; }
-    .bar nav a:first-child { display: none; }
+    .bar nav a:nth-child(-n+2) { display: none; }   /* phones: FAQ + Download only */
     footer .spec { margin-left: 0; }
   }
   @media (max-width: 560px) {
@@ -238,14 +263,395 @@
     .key { transition: none; }
   }
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://nicolaslekai.github.io/paradise-audio-site/#org",
+   "name": "Paradise Audio",
+   "url": "https://nicolaslekai.github.io/paradise-audio-site/",
+   "logo": "https://nicolaslekai.github.io/paradise-audio-site/assets/ui/logo.png"
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://nicolaslekai.github.io/paradise-audio-site/#website",
+   "name": "Paradise Audio",
+   "url": "https://nicolaslekai.github.io/paradise-audio-site/",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://nicolaslekai.github.io/paradise-audio-site/#org"
+   }
+  },
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://nicolaslekai.github.io/paradise-audio-site/#suite",
+   "name": "Paradise Audio Suite",
+   "softwareVersion": "V01",
+   "description": "17 free Audio Unit (AUv3) plug-ins for Logic Pro on macOS: six instruments and eleven effects.",
+   "applicationCategory": "MultimediaApplication",
+   "applicationSubCategory": "Audio plug-in",
+   "operatingSystem": "macOS 12 or later",
+   "processorRequirements": "Apple silicon or Intel",
+   "downloadUrl": "https://github.com/nicolaslekai/paradise-audio-site/releases/download/v01/ParadiseAudio-Suite-V01.dmg",
+   "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/og.jpg",
+   "url": "https://nicolaslekai.github.io/paradise-audio-site/",
+   "publisher": {
+    "@id": "https://nicolaslekai.github.io/paradise-audio-site/#org"
+   },
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+   },
+   "hasPart": [
+    {
+     "@type": "SoftwareApplication",
+     "name": "Engine 909",
+     "description": "A drum machine with a step grid and its own knobs for every voice. Drag the pattern into your arrangement as MIDI or audio.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/engine-909.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit instrument",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Synth Thing",
+     "description": "A synth with its own step sequencer. Draw a melody on the grid, drag notes long, or start from a preset that already plays one.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/synth-thing.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit instrument",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "String Thing",
+     "description": "The same grid, with strings. For pads, stabs and lines that need to hold.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/string-thing.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit instrument",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Bass mit Stimme",
+     "description": "A bass you play from the keyboard, with a voice sample running through it.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/bass-mit-stimme.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit instrument",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Roar Bass",
+     "description": "A growling bass synth. Two oscillators, FM growl, noise, filter and drive.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/roar-bass.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit instrument",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Handy Boy",
+     "description": "A sampler for absolutely everything. Drag in a WAV, AIFF, MP4, MP3, AAC, FLAC or a voice memo and play it from the keyboard.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/handy-boy.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit instrument",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Voice Box",
+     "description": "Eight vocal effects in one rack, from autotune to vocoder.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/voice-box.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit effect",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Ultra Reverse",
+     "description": "Reverse echo: every slice comes back backwards.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/ultra-reverse.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit effect",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Compressor",
+     "description": "A classic compressor with a duck built in.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/compressor.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit effect",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "EQ",
+     "description": "Four bands, high-pass and low-pass, curve on screen.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/eq.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit effect",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Quick Delay",
+     "description": "Tempo-synced delay with eight starting points.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/delay.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit effect",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Reverb",
+     "description": "Room, hall, plate and cathedral, one press each.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/reverb.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit effect",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Saturation",
+     "description": "Drive, bias and tone, with the curve on screen.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/saturation.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit effect",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "De-esser",
+     "description": "Tames harsh S sounds in three simple steps.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/de-esser.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit effect",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Limiter",
+     "description": "Threshold fader, ceiling fader, signal on screen.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/limiter.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit effect",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Big Knob",
+     "description": "One knob: low-pass left, high-pass right.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/big-knob.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit effect",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    },
+    {
+     "@type": "SoftwareApplication",
+     "name": "Pitch Knob",
+     "description": "One big knob that shifts the pitch down or up.",
+     "image": "https://nicolaslekai.github.io/paradise-audio-site/assets/shots/pitch-knob.jpg",
+     "applicationCategory": "MultimediaApplication",
+     "applicationSubCategory": "Audio Unit effect",
+     "operatingSystem": "macOS",
+     "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://nicolaslekai.github.io/paradise-audio-site/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Are the Paradise Audio plug-ins really free?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. All 17 plug-ins are free to download. You can pay what you want, and €0 is fine. There is no account and no licence key."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which hosts do the plug-ins work in?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "They are Audio Unit plug-ins (AUv3) for macOS, so they load in Mac hosts that support Audio Units. We build and test them in Logic Pro."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which Macs are supported?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "macOS 12 or later, on Apple silicon and Intel Macs. Every plug-in is a universal build."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Why does macOS ask me to choose Open Anyway?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The V01 installer is not yet signed with an Apple Developer ID. Open System Settings, go to Privacy & Security and choose Open Anyway once. After that the plug-ins load normally."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Where do I find the plug-ins in Logic Pro?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The effects are in any audio effect slot under Audio Units, Paradise Audio. The instruments are in the instrument slot under AU Instruments, Paradise Audio. Restart Logic Pro once after installing."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is Engine 909 sample-based?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. All twelve drum voices are synthesised live, so every knob reshapes the sound itself. Each voice has its own level, pitch, decay, delay, reverb and filter, and every one of those knobs can be automated in Logic Pro."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I drag Engine 909 patterns into my arrangement?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Drag the pattern onto a track as MIDI or as audio. You can export the mix or one audio file per drum voice."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does the duck in the Compressor do?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It turns the track down and back up in time with the song, from whole bars to sixteenth notes, without setting up a sidechain."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is in Voice Box?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Eight vocal effects in one rack: autotune with key and scale, harmonizer, a low octave voice, delay, stutter, chop, vocoder and reverb. A 3D head sings along with your voice in real time."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "VideoObject",
+   "@id": "https://nicolaslekai.github.io/paradise-audio-site/#film",
+   "name": "Paradise Audio in 30 seconds",
+   "description": "Engine 909 drum machine workflow, the tempo-synced duck in the Compressor and the Voice Box harmonizer with its singing 3D head. Every sound in the film comes from the plug-ins.",
+   "thumbnailUrl": "https://nicolaslekai.github.io/paradise-audio-site/assets/film/paradise-audio-v01-poster.jpg",
+   "contentUrl": "https://nicolaslekai.github.io/paradise-audio-site/assets/film/paradise-audio-v01.mp4",
+   "uploadDate": "2026-11-24",
+   "duration": "PT30S",
+   "publisher": {
+    "@id": "https://nicolaslekai.github.io/paradise-audio-site/#org"
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
 <header class="bar">
   <div class="wrap">
-    <a class="brand" href="#top"><img src="assets/ui/logo.png" alt=""><span>Paradise Audio</span></a>
+    <a class="brand" href="#top"><img src="assets/ui/logo.png" alt="" width="36" height="36"><span>Paradise Audio</span></a>
     <nav aria-label="Sections">
+      <a href="#film">Film</a>
       <a href="#plug-ins">Plug-ins</a>
+      <a href="#faq">FAQ</a>
       <a href="#tip">Download</a>
     </nav>
   </div>
@@ -263,17 +669,351 @@
         </div>
         <small>macOS 12 or later, Apple silicon and Intel. Built and tested in Logic Pro.</small>
       </div>
-      <figure><div id="hero-window"></div><figcaption class="hero-cap" id="hero-cap"></figcaption></figure>
+      <figure><div id="hero-window"><div class="logic" style="--w:1280">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Drums</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" src="assets/shots/engine-909.jpg" width="1600" height="825" alt="Engine 909 drum machine plug-in in Logic Pro: twelve synthesised drum voices on a step grid, each with level, pitch, decay, delay, reverb and filter knobs">
+    <div class="lg-name">Engine 909</div>
+  </div></div><figcaption class="hero-cap" id="hero-cap"><span class="tag">The flagship</span><h3>Engine 909</h3><span class="code">DRM-1</span><p>A drum machine with a step grid and its own knobs for every voice. Drag the pattern into your arrangement as MIDI or audio.</p><p class="why">Nothing is sampled. All twelve voices are synthesised live, so every knob reshapes the sound itself, not a recording of it.</p></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="section" id="film">
+    <div class="wrap">
+      <div class="head"><h2>30 seconds</h2><span class="count">Engine 909, the Compressor duck and Voice Box. Every sound is the plug-ins themselves.</span></div>
+      <div class="well film">
+        <video controls playsinline preload="metadata" poster="assets/film/paradise-audio-v01-poster.jpg" width="1920" height="1080" aria-label="Paradise Audio in 30 seconds: Engine 909, Compressor duck and Voice Box">
+          <source src="assets/film/paradise-audio-v01.mp4" type="video/mp4">
+        </video>
+      </div>
     </div>
   </section>
 
   <section class="section" id="plug-ins">
     <div class="wrap">
       <div class="intro"><h2>Instruments</h2><p>Next to Engine 909: a synth, a string machine, two basses and a sampler for any audio file.<span class="count">6 of 17</span></p></div>
-      <div class="stage" id="rack-instruments"></div>
+      <div class="stage" id="rack-instruments">
+<article class="feature"><div class="win"><div class="logic" style="--w:1280">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Lead</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" src="assets/shots/synth-thing.jpg" width="1600" height="950" alt="Synth Thing synthesizer plug-in with a built-in step sequencer grid and long drawn notes">
+    <div class="lg-name">Synth Thing</div>
+  </div></div>
+    <div><h3>Synth Thing</h3><span class="code">SNT-1</span><p>A synth with its own step sequencer. Draw a melody on the grid, drag notes long, or start from a preset that already plays one.</p><p class="why">Drag across the grid and the notes fuse into one long note, like drawing with a pen.</p></div></article>
+<article class="feature"><div class="win"><div class="logic" style="--w:1280">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Strings</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/string-thing.jpg" width="1600" height="950" alt="String Thing string machine plug-in with a step sequencer grid">
+    <div class="lg-name">String Thing</div>
+  </div></div>
+    <div><h3>String Thing</h3><span class="code">STR-1</span><p>The same grid, with strings. For pads, stabs and lines that need to hold.</p><p class="why">The presets come with melodies already drawn in, so it plays the moment you load it.</p></div></article>
+<article class="feature"><div class="win"><div class="logic" style="--w:960">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Bass Vox</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/bass-mit-stimme.jpg" width="1600" height="1233" alt="Bass mit Stimme bass synth plug-in with a voice sample section and filter envelope">
+    <div class="lg-name">Bass mit Stimme</div>
+  </div></div>
+    <div><h3>Bass mit Stimme</h3><span class="code">BST-1</span><p>A bass you play from the keyboard, with a voice sample running through it.</p><p class="why">The voice sample stretches to your tempo without changing pitch, and WARP locks it to the beat, from a quarter beat to four bars.</p></div></article>
+<article class="feature"><div class="win"><div class="logic" style="--w:1000">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Sub Bass</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/roar-bass.jpg" width="1600" height="800" alt="Roar Bass growling bass synth plug-in with oscilloscope, two oscillators, FM growl and filter">
+    <div class="lg-name">Roar Bass</div>
+  </div></div>
+    <div><h3>Roar Bass</h3><span class="code">RBS-1</span><p>A growling bass synth. Two oscillators, FM growl, noise, filter and drive.</p><p class="why">The FM growl is built in, so the bass snarls without a distortion plug-in after it.</p></div></article>
+<article class="feature"><div class="win"><div class="logic" style="--w:920">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Phone Sample</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/handy-boy.jpg" width="1600" height="1008" alt="Handy Boy sampler plug-in with two sample zones and a phone recording restoration chain">
+    <div class="lg-name">Handy Boy</div>
+  </div></div>
+    <div><h3>Handy Boy</h3><span class="code">HBY-1</span><p>A sampler for absolutely everything. Drag in a WAV, AIFF, MP4, MP3, AAC, FLAC or a voice memo and play it from the keyboard.</p><p class="why">Any file goes. And when it comes from a phone, the restoration chain brings back the highs and warmth the phone mic threw away.</p></div></article>
+</div>
 
       <div class="intro" style="margin-top: clamp(64px, 9vw, 128px)"><h2>Effects</h2><p>From one-knob tools to a whole vocal rack. Everything you need to mix the track.<span class="count">11 of 17</span></p></div>
-      <div class="rack" id="rack-effects"></div>
+      <div class="rack" id="rack-effects">
+<article class="unit wide"><div class="frame"><div style="width:100%"><div class="logic" style="--w:960">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Lead Vocal</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/voice-box.jpg" width="1600" height="767" alt="Voice Box vocal effects rack plug-in with autotune, harmonizer, vocoder and an animated 3D singing head">
+    <div class="lg-name">Voice Box</div>
+  </div></div></div>
+    <div class="label"><h3>Voice Box</h3><span class="code">VBX-1</span></div><p>Eight vocal effects in one rack, from autotune to vocoder.</p><p class="why">A 3D head sings along with you. Its mouth opens and closes with your voice in real time.</p></article>
+<article class="unit"><div class="frame"><div style="width:100.00%"><div class="logic" style="--w:880">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>FX Return</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/ultra-reverse.jpg" width="1600" height="945" alt="Ultra Reverse reverse echo and reverb plug-in">
+    <div class="lg-name">Ultra Reverse</div>
+  </div></div></div>
+    <div class="label"><h3>Ultra Reverse</h3><span class="code">URV-1</span></div><p>Reverse echo: every slice comes back backwards.</p><p class="why">Each echo plays backwards and lands on the beat, so tails swell into the next hit.</p></article>
+<article class="unit"><div class="frame"><div style="width:100.00%"><div class="logic" style="--w:1100">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Drum Bus</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/compressor.jpg" width="1600" height="960" alt="Compressor plug-in with compression curve and tempo-synced duck section">
+    <div class="lg-name">Compressor</div>
+  </div></div></div>
+    <div class="label"><h3>Compressor</h3><span class="code">CMP-1</span></div><p>A classic compressor with a duck built in.</p><p class="why">The duck pumps the track in time with the song, from whole bars to sixteenths, no sidechain.</p></article>
+<article class="unit"><div class="frame"><div style="width:100.00%"><div class="logic" style="--w:880">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Lead Vocal</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/eq.jpg" width="1600" height="945" alt="Four-band EQ plug-in with frequency response curve, high-pass and low-pass">
+    <div class="lg-name">EQ</div>
+  </div></div></div>
+    <div class="label"><h3>EQ</h3><span class="code">EQ-1</span></div><p>Four bands, high-pass and low-pass, curve on screen.</p><p class="why">High-pass and low-pass sit on red knobs at both ends, so the knobs read like the curve.</p></article>
+<article class="unit"><div class="frame"><div style="width:100.00%"><div class="logic" style="--w:1100">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Delay Bus</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/delay.jpg" width="1600" height="960" alt="Quick Delay tempo-synced delay plug-in showing echo taps fading out">
+    <div class="lg-name">Quick Delay</div>
+  </div></div></div>
+    <div class="label"><h3>Quick Delay</h3><span class="code">DLY-1</span></div><p>Tempo-synced delay with eight starting points.</p><p class="why">Tape mode adds wobble and warmth, and you watch every echo fade out on the screen.</p></article>
+<article class="unit"><div class="frame"><div style="width:92.83%"><div class="logic" style="--w:880">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Reverb Bus</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/reverb.jpg" width="1600" height="1055" alt="Reverb plug-in with room, hall, plate and cathedral modes, freeze and wide">
+    <div class="lg-name">Reverb</div>
+  </div></div></div>
+    <div class="label"><h3>Reverb</h3><span class="code">RVB-1</span></div><p>Room, hall, plate and cathedral, one press each.</p><p class="why">FREEZE holds the tail forever while you play over it. WIDE spreads it out in stereo.</p></article>
+<article class="unit"><div class="frame"><div style="width:100.00%"><div class="logic" style="--w:880">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Bass</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/saturation.jpg" width="1600" height="945" alt="Saturation plug-in with drive, bias and tone and its transfer curve">
+    <div class="lg-name">Saturation</div>
+  </div></div></div>
+    <div class="label"><h3>Saturation</h3><span class="code">SAT-1</span></div><p>Drive, bias and tone, with the curve on screen.</p><p class="why">The curve on screen shows exactly how hard each level gets pushed before it clips.</p></article>
+<article class="unit"><div class="frame"><div style="width:100.00%"><div class="logic" style="--w:880">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Lead Vocal</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/de-esser.jpg" width="1600" height="945" alt="De-esser plug-in with sibilance band display and listen mode">
+    <div class="lg-name">De-esser</div>
+  </div></div></div>
+    <div class="label"><h3>De-esser</h3><span class="code">DSR-1</span></div><p>Tames harsh S sounds in three simple steps.</p><p class="why">LISTEN plays only what it takes out, so you set it by ear in a few seconds flat.</p></article>
+<article class="unit"><div class="frame"><div style="width:98.20%"><div class="logic" style="--w:800">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Stereo Out</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/limiter.jpg" width="1600" height="960" alt="Limiter plug-in with threshold and ceiling faders and live waveform">
+    <div class="lg-name">Limiter</div>
+  </div></div></div>
+    <div class="label"><h3>Limiter</h3><span class="code">LIM-1</span></div><p>Threshold fader, ceiling fader, signal on screen.</p><p class="why">Pull the threshold down and watch the peaks flatten. The output never passes the ceiling.</p></article>
+<article class="unit"><div class="frame"><div style="width:78.15%"><div class="logic" style="--w:720">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Drum Bus</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/big-knob.jpg" width="1600" height="1244" alt="Big Knob filter plug-in: one large knob for low-pass and high-pass with distortion">
+    <div class="lg-name">Big Knob</div>
+  </div></div></div>
+    <div class="label"><h3>Big Knob</h3><span class="code">BGK-1</span></div><p>One knob: low-pass left, high-pass right.</p><p class="why">Turn left to darken, right to thin out. The knob in the middle adds distortion on top.</p></article>
+<article class="unit"><div class="frame"><div style="width:78.15%"><div class="logic" style="--w:720">
+    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Lead</div>
+    <div class="lg-head" aria-hidden="true">
+      <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
+      <div class="lg-row"><span class="lg-btn lg-preset">Manual <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span></div>
+      <span></span>
+      <span></span>
+      <div class="lg-row">
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></span>
+        <span class="lg-btn"><span class="dim">Compare</span></span>
+        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
+        <span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg><span class="sep"></span><svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg></span>
+      </div>
+      <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
+    </div>
+    <img class="lg-shot" loading="lazy" src="assets/shots/pitch-knob.jpg" width="1600" height="1244" alt="Pitch Knob plug-in: one large knob that shifts pitch down or up, with a filter">
+    <div class="lg-name">Pitch Knob</div>
+  </div></div></div>
+    <div class="label"><h3>Pitch Knob</h3><span class="code">PTK-1</span></div><p>One big knob that shifts the pitch down or up.</p><p class="why">Made for live moves: sweep the pitch while the track plays. The middle knob is a filter.</p></article>
+</div>
     </div>
   </section>
 
@@ -309,12 +1049,12 @@
 
   <section class="section" id="download">
     <div class="wrap">
-      <div class="head"><h2>Download</h2><span class="count" id="dl-version"></span></div>
+      <div class="head"><h2>Download</h2><span class="count" id="dl-version">Version V01</span></div>
       <div class="well dl">
         <div>
           <p class="lead">One installer puts all 17 plug-ins on your Mac. No account, no licence key.</p>
-          <a class="key red big" id="dl-button" href="#download">Download the suite</a>
-          <p class="meta" id="dl-meta">macOS 12 or later, Apple silicon and Intel.</p>
+          <a class="key red big" id="dl-button" href="https://github.com/nicolaslekai/paradise-audio-site/releases/download/v01/ParadiseAudio-Suite-V01.dmg">Download the suite</a>
+          <p class="meta" id="dl-meta">868 MB. macOS 12 or later, Apple silicon and Intel.</p>
         </div>
         <ol class="steps">
           <li><b>Download the disk image</b><span>It holds every plug-in in the suite.</span></li>
@@ -325,11 +1065,28 @@
     </div>
   </section>
 
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="head"><h2>Questions</h2><span class="count">9 answers</span></div>
+      <div class="faq">
+        <details class="qa" open><summary>Are the Paradise Audio plug-ins really free?</summary><p>Yes. All 17 plug-ins are free to download. You can pay what you want, and €0 is fine. There is no account and no licence key.</p></details>
+        <details class="qa"><summary>Which hosts do the plug-ins work in?</summary><p>They are Audio Unit plug-ins (AUv3) for macOS, so they load in Mac hosts that support Audio Units. We build and test them in Logic Pro.</p></details>
+        <details class="qa"><summary>Which Macs are supported?</summary><p>macOS 12 or later, on Apple silicon and Intel Macs. Every plug-in is a universal build.</p></details>
+        <details class="qa"><summary>Why does macOS ask me to choose Open Anyway?</summary><p>The V01 installer is not yet signed with an Apple Developer ID. Open System Settings, go to Privacy &amp; Security and choose Open Anyway once. After that the plug-ins load normally.</p></details>
+        <details class="qa"><summary>Where do I find the plug-ins in Logic Pro?</summary><p>The effects are in any audio effect slot under Audio Units, Paradise Audio. The instruments are in the instrument slot under AU Instruments, Paradise Audio. Restart Logic Pro once after installing.</p></details>
+        <details class="qa"><summary>Is Engine 909 sample-based?</summary><p>No. All twelve drum voices are synthesised live, so every knob reshapes the sound itself. Each voice has its own level, pitch, decay, delay, reverb and filter, and every one of those knobs can be automated in Logic Pro.</p></details>
+        <details class="qa"><summary>Can I drag Engine 909 patterns into my arrangement?</summary><p>Yes. Drag the pattern onto a track as MIDI or as audio. You can export the mix or one audio file per drum voice.</p></details>
+        <details class="qa"><summary>What does the duck in the Compressor do?</summary><p>It turns the track down and back up in time with the song, from whole bars to sixteenth notes, without setting up a sidechain.</p></details>
+        <details class="qa"><summary>What is in Voice Box?</summary><p>Eight vocal effects in one rack: autotune with key and scale, harmonizer, a low octave voice, delay, stutter, chop, vocoder and reverb. A 3D head sings along with your voice in real time.</p></details>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="#top"><img src="assets/ui/logo.png" alt=""><span>Paradise Audio</span></a>
+    <a class="brand" href="#top"><img src="assets/ui/logo.png" alt="" width="30" height="30"><span>Paradise Audio</span></a>
     <a class="link" href="https://github.com/nicolaslekai/paradise-audio">Source on GitHub</a>
     <span class="spec">AU v3 for macOS</span>
   </div>
@@ -338,97 +1095,12 @@
 <script>
 /* ── Settings. Fill these in to go live. ───────────────────────────── */
 const CONFIG = {
-  downloadUrl: "",          // link to the suite .dmg (e.g. a GitHub release asset)
-  downloadSize: "",         // e.g. "810 MB"
-  version: "",              // e.g. "1.0"
+  downloadUrl: "https://github.com/nicolaslekai/paradise-audio-site/releases/download/v01/ParadiseAudio-Suite-V01.dmg",
+  downloadSize: "868 MB",
+  version: "V01",
   paypalClientId: "",       // PayPal Business app client ID (public, not a secret)
   currency: "EUR"
 };
-
-/* ── The rack ──────────────────────────────────────────────────────── */
-const INSTRUMENTS = [
-  ["engine-909", "Engine 909", "DRM-1", 1600, 825, "A drum machine with a step grid and its own knobs for every voice. Drag the pattern into your arrangement as MIDI or audio.", "Nothing is sampled. All twelve voices are synthesised live, so every knob reshapes the sound itself, not a recording of it."],
-  ["synth-thing", "Synth Thing", "SNT-1", 1600, 950, "A synth with its own step sequencer. Draw a melody on the grid, drag notes long, or start from a preset that already plays one.", "Drag across the grid and the notes fuse into one long note, like drawing with a pen."],
-  ["string-thing", "String Thing", "STR-1", 1600, 950, "The same grid, with strings. For pads, stabs and lines that need to hold.", "The presets come with melodies already drawn in, so it plays the moment you load it."],
-  ["bass-mit-stimme", "Bass mit Stimme", "BST-1", 1600, 1233, "A bass you play from the keyboard, with a voice sample running through it.", "The voice sample stretches to your tempo without changing pitch, and WARP locks it to the beat, from a quarter beat to four bars."],
-  ["roar-bass", "Roar Bass", "RBS-1", 1600, 800, "A growling bass synth. Two oscillators, FM growl, noise, filter and drive.", "The FM growl is built in, so the bass snarls without a distortion plug-in after it."],
-  ["handy-boy", "Handy Boy", "HBY-1", 1600, 1008, "A sampler for absolutely everything. Drag in a WAV, AIFF, MP4, MP3, AAC, FLAC or a voice memo and play it from the keyboard.", "Any file goes. And when it comes from a phone, the restoration chain brings back the highs and warmth the phone mic threw away."]
-];
-const EFFECTS = [
-  ["voice-box", "Voice Box", "VBX-1", 1600, 767, "Eight vocal effects in one rack, from autotune to vocoder.", "A 3D head sings along with you. Its mouth opens and closes with your voice in real time."],
-  ["ultra-reverse", "Ultra Reverse", "URV-1", 1600, 945, "Reverse echo: every slice comes back backwards.", "Each echo plays backwards and lands on the beat, so tails swell into the next hit."],
-  ["compressor", "Compressor", "CMP-1", 1600, 960, "A classic compressor with a duck built in.", "The duck pumps the track in time with the song, from whole bars to sixteenths, no sidechain."],
-  ["eq", "EQ", "EQ-1", 1600, 945, "Four bands, high-pass and low-pass, curve on screen.", "High-pass and low-pass sit on red knobs at both ends, so the knobs read like the curve."],
-  ["delay", "Quick Delay", "DLY-1", 1600, 960, "Tempo-synced delay with eight starting points.", "Tape mode adds wobble and warmth, and you watch every echo fade out on the screen."],
-  ["reverb", "Reverb", "RVB-1", 1600, 1055, "Room, hall, plate and cathedral, one press each.", "FREEZE holds the tail forever while you play over it. WIDE spreads it out in stereo."],
-  ["saturation", "Saturation", "SAT-1", 1600, 945, "Drive, bias and tone, with the curve on screen.", "The curve on screen shows exactly how hard each level gets pushed before it clips."],
-  ["de-esser", "De-esser", "DSR-1", 1600, 945, "Tames harsh S sounds in three simple steps.", "LISTEN plays only what it takes out, so you set it by ear in a few seconds flat."],
-  ["limiter", "Limiter", "LIM-1", 1600, 960, "Threshold fader, ceiling fader, signal on screen.", "Pull the threshold down and watch the peaks flatten. The output never passes the ceiling."],
-  ["big-knob", "Big Knob", "BGK-1", 1600, 1244, "One knob: low-pass left, high-pass right.", "Turn left to darken, right to thin out. The knob in the middle adds distortion on top."],
-  ["pitch-knob", "Pitch Knob", "PTK-1", 1600, 1244, "One big knob that shifts the pitch down or up.", "Made for live moves: sweep the pitch while the track plays. The middle knob is a filter."]
-];
-/* Plug-in size in points (the screenshots are 1600 px wide copies of 2× captures). */
-const PT = { "bass-mit-stimme": [960, 740], "big-knob": [720, 560], "compressor": [1100, 660], "de-esser": [880, 520], "delay": [1100, 660],
-  "engine-909": [1280, 660], "eq": [880, 520], "handy-boy": [920, 580], "limiter": [800, 480], "pitch-knob": [720, 560], "reverb": [880, 580],
-  "roar-bass": [1000, 500], "saturation": [880, 520], "string-thing": [1280, 760], "synth-thing": [1280, 760], "ultra-reverse": [880, 520], "voice-box": [960, 460] };
-/* The track each one would sit on in a session: Logic puts it in the title bar. */
-const TRACK = { "engine-909": "Drums", "synth-thing": "Lead", "string-thing": "Strings", "bass-mit-stimme": "Bass Vox", "roar-bass": "Sub Bass",
-  "handy-boy": "Phone Sample", "voice-box": "Lead Vocal", "compressor": "Drum Bus", "eq": "Lead Vocal", "ultra-reverse": "FX Return",
-  "delay": "Delay Bus", "reverb": "Reverb Bus", "saturation": "Bass", "de-esser": "Lead Vocal", "limiter": "Stereo Out", "big-knob": "Drum Bus", "pitch-knob": "Lead" };
-const ICON = {
-  power: '<svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg>',
-  chev: '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg>',
-  left: '<svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg>',
-  right: '<svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg>',
-  undo: '<svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5L1.8 4.7 4 6.9"/><path d="M2 4.7h5a3 3 0 0 1 0 6H5"/></svg>',
-  redo: '<svg viewBox="0 0 12 12" fill="none" stroke="#8C8C8C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.5l2.2 2.2L8 6.9"/><path d="M10 4.7H5a3 3 0 0 0 0 6h2"/></svg>',
-  link: '<svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg>'
-};
-function logicWindow(slug, name, w, h, lazy) {
-  const [pw, ph] = PT[slug];
-  return `<div class="logic" style="--w:${pw}">
-    <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>${TRACK[slug]}</div>
-    <div class="lg-head" aria-hidden="true">
-      <span class="lg-power">${ICON.power}</span>
-      <div class="lg-row"><span class="lg-btn lg-preset">Manual ${ICON.chev}</span></div>
-      <span></span>
-      <span></span>
-      <div class="lg-row">
-        <span class="lg-btn">${ICON.left}<span class="sep"></span>${ICON.right}</span>
-        <span class="lg-btn"><span class="dim">Compare</span></span>
-        <span class="lg-btn">Copy<span class="sep"></span><span class="dim">Paste</span></span>
-        <span class="lg-btn">${ICON.undo}<span class="sep"></span>${ICON.redo}</span>
-      </div>
-      <div class="lg-view">View: <span class="lg-btn">100 % ${ICON.chev}</span><span class="lg-btn">${ICON.link}</span></div>
-    </div>
-    <img class="lg-shot" ${lazy ? 'loading="lazy" ' : ""}src="assets/shots/${slug}.jpg" width="${w}" height="${h}" alt="${name} open in Logic Pro">
-    <div class="lg-name">${name}</div>
-  </div>`;
-}
-/* Equal-height frames, every window on the same baseline: scale each window to fit the frame. */
-const FRAME = 16 / 12, CHROME_PT = 26 + 81 + 24;
-function fitWidth(slug) { const [pw, ph] = PT[slug]; return Math.min(100, 100 * (pw / (ph + CHROME_PT)) / FRAME).toFixed(2) + "%"; }
-const WIDE = new Set(["voice-box"]);
-function unit([slug, name, code, w, h, text, why]) {
-  const a = document.createElement("article");
-  const wide = WIDE.has(slug);
-  a.className = wide ? "unit wide" : "unit";
-  a.innerHTML = `<div class="frame"><div style="width:${wide ? "100%" : fitWidth(slug)}">${logicWindow(slug, name, w, h, true)}</div></div>
-    <div class="label"><h3>${name}</h3><span class="code">${code}</span></div><p>${text}</p><p class="why">${why}</p>`;
-  return a;
-}
-function feature([slug, name, code, w, h, text, why], i) {
-  const a = document.createElement("article");
-  a.className = "feature";
-  a.innerHTML = `<div class="win">${logicWindow(slug, name, w, h, i > 0)}</div>
-    <div><h3>${name}</h3><span class="code">${code}</span><p>${text}</p><p class="why">${why}</p></div>`;
-  return a;
-}
-const HERO = INSTRUMENTS[0];   // Engine 909, the showcase at the top
-document.getElementById("rack-instruments").append(...INSTRUMENTS.slice(1).map(feature));
-document.getElementById("hero-cap").innerHTML = `<span class="tag">The flagship</span><h3>${HERO[1]}</h3><span class="code">${HERO[2]}</span><p>${HERO[5]}</p><p class="why">${HERO[6]}</p>`;
-document.getElementById("rack-effects").append(...EFFECTS.map(unit));
-document.getElementById("hero-window").innerHTML = logicWindow("engine-909", "Engine 909", 1600, 825, false);
 
 /* ── Download ──────────────────────────────────────────────────────── */
 const dl = document.getElementById("dl-button");
