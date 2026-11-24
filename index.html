@@ -225,8 +225,16 @@
   #paypal-buttons { margin-top: 22px; max-width: 360px; }
 
   /* ── Footer: the brand block every plug-in carries bottom-left ── */
-  .well.film { padding: clamp(8px, 1.2vw, 14px); }
-  .well.film video { display: block; width: 100%; height: auto; border-radius: 4px; background: #000; }
+  .film-frame { position: relative; border-radius: 10px; overflow: hidden; background: #000;
+    box-shadow: 0 0 0 1px rgba(233, 223, 201, .14), 0 22px 60px rgba(0, 0, 0, .55); }
+  .film-frame video { display: block; width: 100%; height: auto; }
+  .watch { position: absolute; inset: 0; display: grid; place-items: center; border: 0; padding: 0; cursor: pointer;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, .05), rgba(0, 0, 0, .38)); }
+  .watch .key { display: inline-flex; align-items: center; gap: 12px; font-size: clamp(1.25rem, 2.4vw, 1.875rem); padding: 12px 28px 9px; pointer-events: none; }
+  .watch svg { width: .8em; height: .8em; margin-top: -.12em; }
+  .watch:hover .key { filter: brightness(1.08); }
+  .watch[hidden] { display: none; }
+  .feature .flag { display: block; font-size: .8125rem; letter-spacing: .14em; text-transform: uppercase; color: var(--red); font-weight: 600; margin-bottom: 6px; }
   .faq { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 0 clamp(20px, 4vw, 56px); }
   details.qa { border-top: 1px solid rgba(233, 223, 201, .14); padding: 14px 0; }
   details.qa summary { cursor: pointer; list-style: none; font-weight: 600; display: grid; grid-template-columns: 1fr auto; gap: 12px; }
@@ -252,7 +260,7 @@
     .rack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .tip { justify-items: start; }
     .knob { margin: 0 auto; }
-    .bar nav a:nth-child(-n+2) { display: none; }   /* phones: FAQ + Download only */
+    .bar nav a:first-child { display: none; }   /* phones: FAQ + Download only */
     footer .spec { margin-left: 0; }
   }
   @media (max-width: 560px) {
@@ -650,7 +658,6 @@
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/ui/logo.png" alt="" width="36" height="36"><span>Paradise Audio</span></a>
     <nav aria-label="Sections">
-      <a href="#film">Film</a>
       <a href="#plug-ins">Plug-ins</a>
       <a href="#faq">FAQ</a>
       <a href="#tip">Download</a>
@@ -670,7 +677,24 @@
         </div>
         <small>macOS 12 or later, Apple silicon and Intel. Built and tested in Logic Pro.</small>
       </div>
-      <figure><div id="hero-window"><div class="logic" style="--w:1280">
+      <figure class="hero-film">
+        <div class="film-frame">
+          <video id="film" playsinline preload="metadata" poster="assets/film/paradise-audio-v01-poster.jpg" width="1920" height="1080" aria-label="Paradise Audio in 36 seconds: Engine 909, Compressor duck and Voice Box">
+            <source src="assets/film/paradise-audio-v01.mp4" type="video/mp4">
+            <track kind="captions" src="assets/film/paradise-audio-v01.en.vtt" srclang="en" label="English">
+          </video>
+          <button class="watch" id="watch" type="button" aria-label="Watch the 36-second film"><span class="key red big"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.8v8.4L10 6z" fill="currentColor"/></svg>Watch me</span></button>
+        </div>
+        <figcaption class="hero-cap"><span class="tag">The film</span><h3>36 seconds</h3><span class="code">FILM</span><p>Engine 909 in three genres, the Compressor duck at four rates and Voice Box on a real voice.</p><p class="why">Every sound in the film comes from the plug-ins themselves.</p></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="plug-ins">
+    <div class="wrap">
+      <div class="intro"><h2>Instruments</h2><p>A drum machine, a synth, a string machine, two basses and a sampler for any audio file.<span class="count">6 of 17</span></p></div>
+      <div class="stage" id="rack-instruments">
+<article class="feature"><div class="win"><div class="logic" style="--w:1280">
     <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Drums</div>
     <div class="lg-head" aria-hidden="true">
       <span class="lg-power"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M8 1.8v6"/><path d="M4.4 4.2a5 5 0 1 0 7.2 0"/></svg></span>
@@ -685,28 +709,10 @@
       </div>
       <div class="lg-view">View: <span class="lg-btn">100 % <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.5l3 3 3-3"/></svg></span><span class="lg-btn"><svg viewBox="0 0 12 12" fill="none" stroke="#E4E4E4" stroke-width="1.4" stroke-linecap="round"><path d="M5 7l2-2"/><path d="M6.3 3.2l.9-.9a2 2 0 0 1 2.8 2.8l-.9.9"/><path d="M5.7 8.8l-.9.9A2 2 0 0 1 2 6.9l.9-.9"/></svg></span></div>
     </div>
-    <img class="lg-shot" src="assets/shots/engine-909.jpg" width="1600" height="825" alt="Engine 909 drum machine plug-in in Logic Pro: twelve synthesised drum voices on a step grid, each with level, pitch, decay, delay, reverb and filter knobs">
+    <img class="lg-shot" loading="lazy" src="assets/shots/engine-909.jpg" width="1600" height="825" alt="Engine 909 drum machine plug-in in Logic Pro: twelve synthesised drum voices on a step grid, each with level, pitch, decay, delay, reverb and filter knobs">
     <div class="lg-name">Engine 909</div>
-  </div></div><figcaption class="hero-cap" id="hero-cap"><span class="tag">The flagship</span><h3>Engine 909</h3><span class="code">DRM-1</span><p>A drum machine with a step grid and its own knobs for every voice. Drag the pattern into your arrangement as MIDI or audio.</p><p class="why">Nothing is sampled. All twelve voices are synthesised live, so every knob reshapes the sound itself, not a recording of it.</p></figcaption></figure>
-    </div>
-  </section>
-
-  <section class="section" id="film">
-    <div class="wrap">
-      <div class="head"><h2>36 seconds</h2><span class="count">Engine 909 in three genres, the Compressor duck at four rates and Voice Box on a real voice. Every sound is the plug-ins themselves.</span></div>
-      <div class="well film">
-        <video controls playsinline preload="metadata" poster="assets/film/paradise-audio-v01-poster.jpg" width="1920" height="1080" aria-label="Paradise Audio in 36 seconds: Engine 909, Compressor duck and Voice Box">
-          <source src="assets/film/paradise-audio-v01.mp4" type="video/mp4">
-          <track kind="captions" src="assets/film/paradise-audio-v01.en.vtt" srclang="en" label="English">
-        </video>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="plug-ins">
-    <div class="wrap">
-      <div class="intro"><h2>Instruments</h2><p>Next to Engine 909: a synth, a string machine, two basses and a sampler for any audio file.<span class="count">6 of 17</span></p></div>
-      <div class="stage" id="rack-instruments">
+  </div></div>
+    <div><span class="flag">The flagship</span><h3>Engine 909</h3><span class="code">DRM-1</span><p>A drum machine with a step grid and its own knobs for every voice. Drag the pattern into your arrangement as MIDI or audio.</p><p class="why">Nothing is sampled. All twelve voices are synthesised live, so every knob reshapes the sound itself, not a recording of it.</p></div></article>
 <article class="feature"><div class="win"><div class="logic" style="--w:1280">
     <div class="lg-title"><span class="lg-lights"><i></i><i></i><i></i></span>Lead</div>
     <div class="lg-head" aria-hidden="true">
@@ -1103,6 +1109,11 @@ const CONFIG = {
   paypalClientId: "",       // PayPal Business app client ID (public, not a secret)
   currency: "EUR"
 };
+
+/* ── Hero film: "Watch me" starts it with sound, then the normal controls take over ── */
+const film = document.getElementById("film"), watch = document.getElementById("watch");
+watch.addEventListener("click", () => { watch.hidden = true; film.controls = true; film.play(); });
+film.addEventListener("ended", () => { film.controls = false; watch.hidden = false; film.load(); });
 
 /* ── Download ──────────────────────────────────────────────────────── */
 const dl = document.getElementById("dl-button");
